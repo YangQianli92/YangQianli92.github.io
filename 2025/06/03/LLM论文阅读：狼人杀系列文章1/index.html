@@ -1,0 +1,469 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LLM论文阅读:RAG-MCP：基于强化学习的语言代理在狼人游戏中的战略玩法 | QianLi Yang</title><meta name="author" content="QianLi Yang"><meta name="copyright" content="QianLi Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="#1 Language Agents with Reinforcement Learning for Strategic Play in the Werewolf GameAuthors: Zelai Xu, Chao Yu, Fei Fang, Yu Wang, Yi Wu Agents built with large language models (LLMs) have shown gre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LLM论文阅读:RAG-MCP：基于强化学习的语言代理在狼人游戏中的战略玩法">
+<meta property="og:url" content="http://example.com/2025/06/03/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A01/index.html">
+<meta property="og:site_name" content="QianLi Yang">
+<meta property="og:description" content="#1 Language Agents with Reinforcement Learning for Strategic Play in the Werewolf GameAuthors: Zelai Xu, Chao Yu, Fei Fang, Yu Wang, Yi Wu Agents built with large language models (LLMs) have shown gre">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/head.jpg">
+<meta property="article:published_time" content="2025-06-03T04:46:48.000Z">
+<meta property="article:modified_time" content="2025-06-06T03:54:09.272Z">
+<meta property="article:author" content="QianLi Yang">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Paper">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/head.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/06/03/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A01/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LLM论文阅读:RAG-MCP：基于强化学习的语言代理在狼人游戏中的战略玩法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/YangQianli92"><i class="fa-fw fab fa-github"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">QianLi Yang</span></a><a class="nav-page-title" href="/"><span class="site-name">LLM论文阅读:RAG-MCP：基于强化学习的语言代理在狼人游戏中的战略玩法</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/YangQianli92"><i class="fa-fw fab fa-github"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">LLM论文阅读:RAG-MCP：基于强化学习的语言代理在狼人游戏中的战略玩法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-03T04:46:48.000Z" title="发表于 2025-06-03 12:46:48">2025-06-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-06T03:54:09.272Z" title="更新于 2025-06-06 11:54:09">2025-06-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="1-Language-Agents-with-Reinforcement-Learning-for-Strategic-Play-in-the-Werewolf-Game"><a href="#1-Language-Agents-with-Reinforcement-Learning-for-Strategic-Play-in-the-Werewolf-Game" class="headerlink" title="#1 Language Agents with Reinforcement Learning for Strategic Play in the Werewolf Game"></a><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2310.18940" title="1/1">#1</a> <a target="_blank" rel="noopener" href="https://papers.cool/arxiv/2310.18940">Language Agents with Reinforcement Learning for Strategic Play in the Werewolf Game</a></h2><p><strong>Authors</strong>: <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Zelai%20Xu">Zelai Xu</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Chao%20Yu">Chao Yu</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Fei%20Fang">Fei Fang</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Yu%20Wang">Yu Wang</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Yi%20Wu">Yi Wu</a></p>
+<p>Agents built with large language models (LLMs) have shown great potential across a wide range of domains. However, in complex decision-making tasks, pure LLM-based agents tend to exhibit intrinsic bias in their choice of actions, which is inherited from the model’s training data and results in suboptimal performance. To develop strategic language agents, i.e., agents that generate flexible language actions and possess strong decision-making abilities, we propose a novel framework that powers LLM-based agents with reinforcement learning (RL). We consider Werewolf, a popular social deduction game, as a challenging testbed that emphasizes versatile communication and strategic gameplay. To mitigate the intrinsic bias in language actions, our agents use an LLM to perform deductive reasoning and generate a diverse set of action candidates. Then an RL policy trained to optimize the decision-making ability chooses an action from the candidates to play in the game. Extensive experiments show that our agents overcome the intrinsic bias and outperform existing LLM-based agents in the Werewolf game. We also conduct human-agent experiments and find that our agents achieve human-level performance and demonstrate strong strategic play.</p>
+<p><strong>Subjects</strong>: <a target="_blank" rel="noopener" href="https://papers.cool/arxiv/cs.AI">Artificial Intelligence</a> , <a target="_blank" rel="noopener" href="https://papers.cool/arxiv/cs.LG">Machine Learning</a> , <a target="_blank" rel="noopener" href="https://papers.cool/arxiv/cs.MA">Multiagent Systems</a></p>
+<p><strong>Publish</strong>: 2023-10-29 09:02:57 UTC</p>
+<p><strong>Q</strong>: 这篇论文试图解决什么问题？</p>
+<p><strong>A</strong>: 这篇论文试图解决的问题是如何构建具有战略性语言行动能力和强大决策制定能力的智能代理（agents），特别是在复杂的多人游戏中。具体来说，论文关注以下几个核心问题：</p>
+<ol>
+<li><p><strong>大型语言模型（LLMs）在复杂决策任务中的固有偏差问题</strong>：基于LLMs构建的代理在复杂决策任务（如多人游戏）中，由于模型训练数据的影响，往往会在其行动选择中表现出固有的偏差，导致性能不佳。</p>
+</li>
+<li><p><strong>在复杂多人游戏中的战略性语言代理的开发</strong>：论文提出了一种新框架，通过结合强化学习（RL）来增强基于LLMs的代理，使其能够生成灵活的语言行动，并具备强大的决策制定能力。</p>
+</li>
+<li><p><strong>在狼人杀游戏中的测试和应用</strong>：将狼人杀游戏作为一个具有挑战性的测试平台，这个游戏强调多变化的沟通和战略游戏玩法，要求代理能够处理具有欺骗性的信息并做出战略性的决策。</p>
+</li>
+<li><p><strong>解决LLMs固有偏差和优化决策制定</strong>：通过提出的方法，论文旨在克服LLMs在语言行动中的固有偏差，并通过强化学习策略来优化代理的决策制定能力，从而在狼人杀游戏中实现更强的策略性游戏表现。</p>
+</li>
+</ol>
+<p>总结来说，论文的核心目标是开发出能够在复杂社交游戏中展现出人类水平表现的战略性语言代理，这些代理不仅能够理解和生成自然语言，还能够进行复杂的逻辑推理和战略决策。</p>
+<p><strong>Q</strong>: 有哪些相关研究？</p>
+<p><strong>A</strong>: 根据这篇论文的内容，相关研究主要涉及以下几个领域：</p>
+<ol>
+<li><p><strong>大型语言模型（LLMs）的应用</strong>：</p>
+<ul>
+<li>近期的研究趋势是利用大型语言模型在各个领域构建智能代理，包括网站场景、游戏和模拟环境、现实世界应用以及多智能体环境。例如，Nakano et al. (2021)、Yao et al. (2022a)、Deng et al. (2023) 等。</li>
+</ul>
+</li>
+<li><p><strong>基于提示技术（Prompting Techniques）的决策制定</strong>：</p>
+<ul>
+<li>一些工作通过提示技术来解锁LLMs的推理能力，例如 Chain-of-Thought (CoT) (Wei et al., 2022b) 和 ReAct (Yao et al., 2022b)，这些方法通过让LLMs逐步思考来生成推理过程和行动计划。</li>
+</ul>
+</li>
+<li><p><strong>结合LLMs和外部模块以增强决策能力</strong>：</p>
+<ul>
+<li>一些研究通过将LLMs与强化学习（RL）等外部模块结合来提升代理的决策能力，如Cicero (Meta et al., 2022) 结合LLMs和RL在外交游戏中达到人类水平的表现。</li>
+</ul>
+</li>
+<li><p><strong>非合作游戏中的强化学习</strong>：</p>
+<ul>
+<li>将强化学习应用于非合作游戏，如围棋、扑克和视频游戏，这些研究主要基于自博弈（self-play）和其变体，例如Silver et al. (2016; 2018)、Moravˇcík et al. (2017)、Vinyals et al. (2019) 等。</li>
+</ul>
+</li>
+<li><p><strong>社交推理游戏中的AI代理</strong>：</p>
+<ul>
+<li>社交推理游戏需要强大的沟通技巧和战略决策能力，早期的代理如Wang &amp; Kaneko (2018) 和 DeepRole (Serrino et al., 2019) 缺乏语言能力，而后来的研究则利用LLMs开发能在自然语言中玩这些游戏的代理，例如Xu et al. (2023a) 和 ReCon (Wang et al., 2023b)。</li>
+</ul>
+</li>
+</ol>
+<p>这些相关研究为本文提出的结合LLMs和RL以构建战略性语言代理的框架提供了理论基础和技术背景。通过这些研究，本文能够在狼人杀这一社交推理游戏中测试和验证所提出方法的有效性。</p>
+<p><strong>Q</strong>: 论文如何解决这个问题？</p>
+<p><strong>A</strong>: 论文通过提出一个结合大型语言模型（LLMs）和强化学习（RL）的新框架来解决上述问题。这个框架旨在构建能够生成灵活语言行动并具备强大决策能力的“战略性语言代理”。具体的解决方案包含以下几个关键组件：</p>
+<h3 id="1-隐藏角色推导（Hidden-Role-Deduction）"><a href="#1-隐藏角色推导（Hidden-Role-Deduction）" class="headerlink" title="1. 隐藏角色推导（Hidden Role Deduction）"></a>1. 隐藏角色推导（Hidden Role Deduction）</h3><ul>
+<li>使用LLM来区分真实与虚假陈述，并显式推导出每个玩家的隐藏角色，以辅助后续的决策制定。</li>
+</ul>
+<h3 id="2-多样化行动生成（Diverse-Action-Generation）"><a href="#2-多样化行动生成（Diverse-Action-Generation）" class="headerlink" title="2. 多样化行动生成（Diverse Action Generation）"></a>2. 多样化行动生成（Diverse Action Generation）</h3><ul>
+<li>通过提示LLM生成一组具有战略多样性的动作候选，而不是单一动作，以减少固有偏差并增加对抗对手的不可预测性。</li>
+</ul>
+<h3 id="3-基于种群的RL训练（Population-Based-RL-Training）"><a href="#3-基于种群的RL训练（Population-Based-RL-Training）" class="headerlink" title="3. 基于种群的RL训练（Population-Based RL Training）"></a>3. 基于种群的RL训练（Population-Based RL Training）</h3><ul>
+<li>学习一个RL策略来优化动作候选上的分布，并通过与多种不同代理对战来增强策略的鲁棒性。</li>
+</ul>
+<p>以下是这些组件如何协同工作的具体细节：</p>
+<h4 id="隐藏角色推导"><a href="#隐藏角色推导" class="headerlink" title="隐藏角色推导"></a>隐藏角色推导</h4><ul>
+<li>将原始观察结果（自然语言形式的游戏历史信息）转换为有组织的信息记录和结构化的推导结果。</li>
+<li>信息记录将原始观察结果分类为事实、潜在真实和潜在欺骗三类。</li>
+<li>基于组织好的信息记录，提示LLM推导其他玩家的隐藏角色。</li>
+</ul>
+<h4 id="多样化行动生成"><a href="#多样化行动生成" class="headerlink" title="多样化行动生成"></a>多样化行动生成</h4><ul>
+<li>给定信息记录和推导结果作为输入，通过两种方法生成N个动作候选：<ul>
+<li><strong>Vanilla Prompting</strong>：一次性生成所有动作候选。</li>
+<li><strong>Iterative Prompting</strong>：迭代提示LLM生成每个动作候选。</li>
+</ul>
+</li>
+</ul>
+<h4 id="基于种群的RL训练"><a href="#基于种群的RL训练" class="headerlink" title="基于种群的RL训练"></a>基于种群的RL训练</h4><ul>
+<li>使用自注意力网络作为RL策略，输入包括观察和所有动作候选的嵌入表示。</li>
+<li>通过玩家嵌入、观察嵌入和动作候选嵌入之间的点积注意力机制来输出动作候选的概率分布。</li>
+<li>通过与包括不同策略的代理种群对战来训练RL策略，以提高策略的鲁棒性和性能。</li>
+</ul>
+<p>通过这种方式，论文提出的方法能够有效地结合LLM生成的语言能力和RL的决策优化能力，以克服LLMs的固有偏差，并在复杂的社交推理游戏中实现强大的战略性游戏表现。</p>
+<p><strong>Q</strong>: 论文做了哪些实验？</p>
+<p><strong>A</strong>: 论文中进行了一系列实验来全面评估所提出的战略性语言代理（strategic language agents）的性能。以下是实验的具体内容：</p>
+<h3 id="1-案例研究（Case-Studies）"><a href="#1-案例研究（Case-Studies）" class="headerlink" title="1. 案例研究（Case Studies）"></a>1. 案例研究（Case Studies）</h3><ul>
+<li><strong>目的</strong>：验证所提出的方法是否能够克服LLMs的固有偏差。</li>
+<li><strong>内容</strong>：在狼人杀游戏中选取三个典型情境，比较战略性语言代理与纯LLM基础代理的动作分布。<ul>
+<li>包括“狼人第一夜行动”、“医生第一夜行动”和“村民在两个自称先知的情况下的投票行动”。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-循环赛（Round-Robin-Tournament）"><a href="#2-循环赛（Round-Robin-Tournament）" class="headerlink" title="2. 循环赛（Round-Robin Tournament）"></a>2. 循环赛（Round-Robin Tournament）</h3><ul>
+<li><strong>目的</strong>：评估战略性语言代理在狼人杀游戏中的决策能力。</li>
+<li><strong>内容</strong>：将战略性语言代理与四种现有的LLM基础代理进行对比，通过循环赛的形式进行竞争。<ul>
+<li>代理包括ReAct、ReCon、Concurrent和Atomic。</li>
+<li>通过5×5的交叉比赛矩阵记录村民的胜率。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-人机实验（Human-Agent-Experiments）"><a href="#3-人机实验（Human-Agent-Experiments）" class="headerlink" title="3. 人机实验（Human-Agent Experiments）"></a>3. 人机实验（Human-Agent Experiments）</h3><ul>
+<li><strong>目的</strong>：评估战略性语言代理与人类玩家的表现对比。</li>
+<li><strong>内容</strong>：在两种设置下进行人机实验。<ul>
+<li>设置一：让一个人类或一个AI代理与六个复制的战略性语言代理一起游戏。</li>
+<li>设置二：让一个AI代理或一个人类与六个人类玩家一起游戏。</li>
+<li>招募了160名人类玩家参与实验，并记录了胜率数据。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-消融研究（Ablation-Study）"><a href="#4-消融研究（Ablation-Study）" class="headerlink" title="4. 消融研究（Ablation Study）"></a>4. 消融研究（Ablation Study）</h3><ul>
+<li><strong>目的</strong>：探究框架中关键组件的贡献。</li>
+<li><strong>内容</strong>：通过逐步移除框架中的三个关键组件来评估它们对性能的影响。<ul>
+<li>组件包括：RL策略、多样化动作生成和隐藏角色推导。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-其他实验和讨论"><a href="#5-其他实验和讨论" class="headerlink" title="5. 其他实验和讨论"></a>5. 其他实验和讨论</h3><ul>
+<li><strong>目的</strong>：进一步分析和讨论战略性语言代理的表现和行为。</li>
+<li><strong>内容</strong>：包括对不同提示技术的比较、沟通的重要性、动作候选数量N的影响、对其他LLMs的零样本迁移能力以及对不同狼人杀游戏设置的泛化能力。</li>
+</ul>
+<p>这些实验从多个角度验证了战略性语言代理的有效性，包括它们在克服固有偏差、提高决策质量、与人类玩家的互动以及在不同游戏设置中的泛化能力。通过这些实验，论文展示了所提出方法在复杂社交推理游戏中的优越性能和鲁棒性。</p>
+<p><strong>Q</strong>: 有什么可以进一步探索的点？</p>
+<p><strong>A</strong>: 根据论文内容和实验结果，以下是一些可以进一步探索的点：</p>
+<ol>
+<li><p><strong>改进提示技术（Prompting Techniques）</strong>：</p>
+<ul>
+<li>尽管论文中的框架与多种提示技术兼容，但当前使用的提示可能不是最优的。研究更精细的提示设计可能进一步提升代理的性能。</li>
+</ul>
+</li>
+<li><p><strong>泛化到其他游戏和设置</strong>：</p>
+<ul>
+<li>将所提出的框架应用到其他社交推理游戏（如《抵抗：阿瓦隆》）或具有不同规则和角色的狼人杀变体中，探索其泛化能力和适应性。</li>
+</ul>
+</li>
+<li><p><strong>更复杂的环境和交互</strong>：</p>
+<ul>
+<li>在更复杂的环境（如考虑玩家的表情和语调）中测试代理，评估其在处理非语言信息时的表现。</li>
+</ul>
+</li>
+<li><p><strong>增强学习策略</strong>：</p>
+<ul>
+<li>探索不同的强化学习算法和策略，例如使用actor-critic方法或PPO（Proximal Policy Optimization）来提高学习效率和性能。</li>
+</ul>
+</li>
+<li><p><strong>多模态输入的处理</strong>：</p>
+<ul>
+<li>考虑将视觉、音频等多模态输入整合到代理中，使其能够处理更丰富的信息，例如玩家的面部表情或语音模式。</li>
+</ul>
+</li>
+<li><p><strong>更大规模的人类评估</strong>：</p>
+<ul>
+<li>进行更大规模的人类玩家评估，以更准确地衡量代理与人类玩家之间的交互和性能差异。</li>
+</ul>
+</li>
+<li><p><strong>道德和社会影响</strong>：</p>
+<ul>
+<li>进一步探讨AI代理在具有欺骗性质的游戏中可能引起的伦理和社会问题，并制定相应的指导原则。</li>
+</ul>
+</li>
+<li><p><strong>对抗性策略的研究</strong>：</p>
+<ul>
+<li>研究代理如何对抗其他高级AI代理，以及如何提高在面对更复杂对手时的鲁棒性。</li>
+</ul>
+</li>
+<li><p><strong>自我适应和在线学习</strong>：</p>
+<ul>
+<li>探索代理能否在游戏过程中动态调整其策略，并从经验中在线学习。</li>
+</ul>
+</li>
+<li><p><strong>解释性和透明度</strong>：</p>
+</li>
+</ol>
+<pre><code>-   提高代理决策过程的解释性，让人类玩家更好地理解AI的行为和决策依据。
+</code></pre>
+<ol start="11">
+<li><strong>跨领域应用</strong>：</li>
+</ol>
+<pre><code>-   考虑将这种类型的AI代理应用于其他领域，如谈判、辩论或客户服务，其中需要复杂的沟通和策略制定。
+</code></pre>
+<p>这些探索点可以帮助研究者更深入地理解战略性语言代理的能力，并推动相关技术的发展和应用。</p>
+<p><strong>Q</strong>: 总结一下论文的主要内容</p>
+<p><strong>A</strong>: 这篇论文的主要内容包括以下几个方面：</p>
+<ol>
+<li><p><strong>问题陈述</strong>：</p>
+<ul>
+<li>论文指出，基于大型语言模型（LLMs）的代理在复杂决策任务中存在固有的行动选择偏差，导致性能不佳。特别是在需要复杂沟通和策略性游戏的情境下，如狼人杀游戏。</li>
+</ul>
+</li>
+<li><p><strong>研究目标</strong>：</p>
+<ul>
+<li>旨在开发能够生成灵活语言行动并具备强大决策能力的“战略性语言代理”，即能够处理复杂社交游戏中的沟通和策略制定。</li>
+</ul>
+</li>
+<li><p><strong>方法论</strong>：</p>
+<ul>
+<li>提出了一个结合LLMs和强化学习（RL）的新框架，包括三个主要组件：<ul>
+<li><strong>隐藏角色推导</strong>：使用LLM来推导其他玩家的隐藏角色，辅助决策。</li>
+<li><strong>多样化行动生成</strong>：生成一组多样化的动作候选以减少固有偏差。</li>
+<li><strong>基于种群的RL训练</strong>：通过与多种代理对战来训练RL策略，优化动作选择。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>实验验证</strong>：</p>
+<ul>
+<li>通过案例研究、循环赛、人机实验和消融研究等实验，验证了所提方法的有效性：<ul>
+<li>案例研究展示了如何克服固有偏差。</li>
+<li>循环赛与现有代理比较，证明了决策优势。</li>
+<li>人机实验显示了与人类玩家相比的竞争力。</li>
+<li>消融研究确认了各个组件的贡献。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>结论</strong>：</p>
+<ul>
+<li>结合LLMs和RL的政策能够显著提升代理在狼人杀游戏中的表现，达到甚至超越人类玩家的水平。</li>
+</ul>
+</li>
+<li><p><strong>更广泛的社会影响</strong>：</p>
+<ul>
+<li>论文还讨论了AI代理在具有欺骗性质的游戏中可能引起的伦理问题，并承诺采取措施减少对参与者和社会的潜在负面影响。</li>
+</ul>
+</li>
+</ol>
+<p>总体而言，这篇论文提出了一个创新的框架，通过结合LLMs的自然语言处理能力和RL的决策优化能力，来解决复杂社交游戏中的策略性代理设计问题，并在理论上和实验上都取得了积极的结果。</p>
+<p><strong>Q</strong>: 想要进一步了解论文</p>
+<p><strong>A</strong>: 以上只是了解一篇论文的几个基本FAQ。如果你还想与Kimi进一步讨论该论文，请点击 <a target="_blank" rel="noopener" href="http://kimi.moonshot.cn/_prefill_chat?prefill_prompt=%20%E6%88%91%E4%BB%AC%E8%A6%81%E8%AE%A8%E8%AE%BA%E7%9A%84%E8%AE%BA%E6%96%87%E6%98%AFLanguage%20Agents%20with%20Reinforcement%20Learning%20for%20Strategic%20Play%20in%20the%20Werewolf%20Game%EF%BC%8C%E9%93%BE%E6%8E%A5%E6%98%AF%20%20https://arxiv.org/pdf/2310.18940%20%20%EF%BC%8C%E5%B7%B2%E6%9C%89%E7%9A%84FAQ%E9%93%BE%E6%8E%A5%E6%98%AF%20%20https://papers.cool/arxiv/kimi?paper=2310.18940%20%20%E3%80%82%E8%AF%B7%E4%BB%A5%E6%AD%A4%E4%B8%BA%E5%9F%BA%E7%A1%80%EF%BC%8C%E7%BB%A7%E7%BB%AD%E5%9B%9E%E7%AD%94%E6%88%91%E5%90%8E%E9%9D%A2%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82&system_prompt=%E4%BD%A0%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AD%A6%E6%9C%AF%E5%8A%A9%E6%89%8B%EF%BC%8C%E5%90%8E%E9%9D%A2%E7%9A%84%E5%AF%B9%E8%AF%9D%E5%B0%86%E5%9B%B4%E7%BB%95%E7%9D%80%E4%BB%A5%E4%B8%8B%E8%AE%BA%E6%96%87%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%EF%BC%8C%E5%B7%B2%E7%BB%8F%E9%80%9A%E8%BF%87%E9%93%BE%E6%8E%A5%E7%BB%99%E5%87%BA%E4%BA%86%E8%AE%BA%E6%96%87%E7%9A%84PDF%E5%92%8C%E8%AE%BA%E6%96%87%E5%B7%B2%E6%9C%89%E7%9A%84FAQ%E3%80%82%E7%94%A8%E6%88%B7%E5%B0%86%E7%BB%A7%E7%BB%AD%E5%90%91%E4%BD%A0%E5%92%A8%E8%AF%A2%E8%AE%BA%E6%96%87%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%EF%BC%8C%E8%AF%B7%E4%BD%A0%E4%BD%9C%E5%87%BA%E4%B8%93%E4%B8%9A%E7%9A%84%E5%9B%9E%E7%AD%94%EF%BC%8C%E4%B8%8D%E8%A6%81%E5%87%BA%E7%8E%B0%E7%AC%AC%E4%B8%80%E4%BA%BA%E7%A7%B0%EF%BC%8C%E5%BD%93%E6%B6%89%E5%8F%8A%E5%88%B0%E5%88%86%E7%82%B9%E5%9B%9E%E7%AD%94%E6%97%B6%EF%BC%8C%E9%BC%93%E5%8A%B1%E4%BD%A0%E4%BB%A5markdown%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA%E3%80%82&send_immediately=true&force_search=false"><strong>这里</strong></a> 为你跳转Kimi AI网页版，并启动一个与该论文相关的新会话。</p>
+<p><strong>Q</strong>: 介绍一下文章中使用的Self-attention policy architecture</p>
+<p><strong>A</strong>：在论文 <em>Language Agents with Reinforcement Learning for Strategic Play in the Werewolf Game</em> 中，作者提出了一个结合大型语言模型（LLMs）和强化学习（RL）的框架，用于构建能够在复杂社交游戏中进行战略性决策的智能代理。其中，<strong>Self-attention policy architecture</strong> 是该框架中用于强化学习策略训练的关键部分，以下是其详细介绍：</p>
+<h3 id="Self-attention-policy-architecture"><a href="#Self-attention-policy-architecture" class="headerlink" title="Self-attention policy architecture"></a>Self-attention policy architecture</h3><ul>
+<li><p><strong>输入部分</strong>：</p>
+<ul>
+<li><p><strong>玩家向量（Player Vectors）</strong>：包含玩家的ID、角色等信息，通过one-hot编码生成玩家向量，然后输入到MLP编码器中得到玩家嵌入。</p>
+</li>
+<li><p><strong>语言观察（Language Observation）</strong>：以自然语言形式表示的原始观察输入，包括信息记录和推导结果。使用LLM嵌入API将其转换为向量嵌入，长度为1536。</p>
+</li>
+<li><p><strong>语言行动候选（Language Action Candidates）</strong>：每个行动候选的原始输入也是自然语言形式，包括推理和行动。同样使用LLM嵌入API将其转换为向量嵌入。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>处理部分</strong>：</p>
+<ul>
+<li><p>使用残差自注意力网络（Residual Self-Attention Network）来生成上下文化的玩家嵌入、观察嵌入和行动嵌入，该网络不使用位置嵌入。</p>
+</li>
+<li><p>将玩家嵌入和观察嵌入进行平均池化（Average Pooling），得到状态嵌入（State Embedding）。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>输出部分</strong>：</p>
+<ul>
+<li><p>将状态嵌入输入到MLP批评头（Critic Head）中，以产生预测值（Predicted Value）。</p>
+</li>
+<li><p>采样行动候选的概率与状态嵌入和相应行动嵌入之间的点积注意力（Dot-Product Attention）成正比。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li><p>该架构通过将玩家信息、观察信息和行动候选信息进行融合，利用自注意力机制捕捉这些信息之间的关系，从而为智能代理提供了一个能够根据当前游戏状态和行动候选来做出最优决策的策略网络。</p>
+</li>
+<li><p>它允许智能代理在复杂的社交游戏中，基于对语言信息的理解和处理，做出具有战略性的决策，同时通过强化学习不断优化这些决策。</p>
+</li>
+</ul>
+<p>这种架构设计使得智能代理能够更好地理解和处理游戏中的语言信息，从而在狼人杀等复杂的社交推理游戏中展现出更强的策略性和适应性。</p>
+<p><strong>Q</strong>： AI-狼人杀常见的评价指标</p>
+<p><strong>A</strong>:  </p>
+<table>
+<thead>
+<tr>
+<th>关键能力</th>
+<th>描述</th>
+<th>评估指标</th>
+<th>相关研究</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>推理能力</td>
+<td>演绎、归纳、多跳推理、溯因</td>
+<td>游戏胜率、推理准确性、中间推理步骤验证</td>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/html/2412.06394v4">sysname</a> 、 <a target="_blank" rel="noopener" href="https://visual-ai.github.io/gamebot/">GAMEBOT</a>、<a target="_blank" rel="noopener" href="https://www.themoonlight.io/es/review/amongagents-evaluating-large-language-models-in-the-interactive-text-based-social-deduction-game">AMONGAGENTS</a></td>
+</tr>
+<tr>
+<td>说服能力</td>
+<td>通过语言影响其他玩家决策</td>
+<td>游戏胜率、对话质量、人类定性评估</td>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/html/2506.00160v1">Werewolf Arena</a></td>
+</tr>
+<tr>
+<td>欺骗能力</td>
+<td>在不完全信息下误导其他玩家</td>
+<td>游戏胜率、欺骗成功率、欺骗有效性</td>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2407.16521">AMONGAGENTS</a></td>
+</tr>
+<tr>
+<td>记忆能力</td>
+<td>跟踪过去状态、行动和对话历史</td>
+<td>记忆回溯准确性、对话一致性</td>
+<td>AMONGAGENTS , <a target="_blank" rel="noopener" href="https://arxiv.org/html/2407.13943v1">Werewolf Arena</a></td>
+</tr>
+<tr>
+<td>决策能力</td>
+<td>基于观察、记忆和思考做出的行动</td>
+<td>游戏胜率、行动合理性、策略准确性</td>
+<td></td>
+</tr>
+<tr>
+<td>对话一致性</td>
+<td>长期对话中发言的连贯性与无矛盾</td>
+<td>矛盾发言率</td>
+<td></td>
+</tr>
+<tr>
+<td>人类相似度</td>
+<td>决策发言类人类程度</td>
+<td>人类定性评估</td>
+<td></td>
+</tr>
+<tr>
+<td>偏好遵循</td>
+<td>决策根据预设的偏好行为</td>
+<td>行为偏好一致性</td>
+<td></td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">QianLi Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://yangqianli92.github.io/">https://yangqianli92.github.io/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">QianLi Yang</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/Paper/">Paper</a></div><div class="post-share"><div class="social-share" data-image="/images/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/06/03/MCP-RAG/" title="LLM论文阅读:RAG-MCP：通过检索增强生成技术缓解大型语言模型工具选择中的提示膨胀问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">LLM论文阅读:RAG-MCP：通过检索增强生成技术缓解大型语言模型工具选择中的提示膨胀问题</div></div><div class="info-2"><div class="info-item-1">RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation [PDF5] [Copy] [Kimi19] [REL]Authors: Tiantian Gan, Qiyao Sun Large language models (LLMs) struggle to effectively utilize a growing number of external tools, such as those defined by the Model Context Protocol (MCP)\cite{IntroducingMCP}, due to prompt bloat and selection complexity. We introduce RAG-MCP, a Retrieval-Augmented Generation framework that overcomes this challenge by offloading tool...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/06/03/MCP-RAG/" title="LLM论文阅读:RAG-MCP：通过检索增强生成技术缓解大型语言模型工具选择中的提示膨胀问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-03</div><div class="info-item-2">LLM论文阅读:RAG-MCP：通过检索增强生成技术缓解大型语言模型工具选择中的提示膨胀问题</div></div><div class="info-2"><div class="info-item-1">RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation [PDF5] [Copy] [Kimi19] [REL]Authors: Tiantian Gan, Qiyao Sun Large language models (LLMs) struggle to effectively utilize a growing number of external tools, such as those defined by the Model Context Protocol (MCP)\cite{IntroducingMCP}, due to prompt bloat and selection complexity. We introduce RAG-MCP, a Retrieval-Augmented Generation framework that overcomes this challenge by offloading tool...</div></div></div></a><a class="pagination-related" href="/2025/05/29/function_calling/" title="LLM实践:function calling工具调用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-29</div><div class="info-item-2">LLM实践:function calling工具调用</div></div><div class="info-2"><div class="info-item-1">Function Calling工具使用，也称为函数调用(Function calling)，是指通过定义和调用外部工具或函数来扩展大模型的能力。我们可以为大模型提供一组预定义工具的访问权限，它可以随时调用这些工具。工具允许我们编写代码，这些代码可以执行大模型无法执行的特定任务或计算。简而言之：工具使用是增强大模型功能的一种方式。  工具调用通常具有以下几个特性：1 拓展大模型的功能：使用工具可以让大模型的功能超越其内置功能。通过定义和调用外部工具，您可以使大模型能够执行原本无法完成的任务 2 与现有系统集成：使用工具可以实现大模型与您现有系统、数据库或 API 的无缝集成 3...</div></div></div></a><a class="pagination-related" href="/2025/05/13/langrensha/" title="LLM实践:基于LLM的狼人杀文字版游戏"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-13</div><div class="info-item-2">LLM实践:基于LLM的狼人杀文字版游戏</div></div><div class="info-2"><div class="info-item-1">游戏流程详细介绍整个狼人杀游戏的流程主要由 GameManager 类和 RoleAIManager 类协同完成，以下是详细的游戏流程： 1. 游戏初始化GameManager 初始化：在 GameManager 类的 __init__ 方法中，设置游戏的基本信息，如游戏 ID、轮次、日夜状态、玩家角色配置、存活玩家列表、死亡玩家记录等。角色分配：调用 startup 方法，随机分配玩家角色，并为每个玩家创建对应的 RoleAIManager 对象。同时，记录每个角色对应的玩家编号，以及每个玩家的真实角色。 2. 夜晚阶段狼人行动：在 act_at_night 方法中，首先处理狼人杀人。存活的狼人玩家通过 RoleAIManager 的 act_at_night 方法进行思考和投票，选择要杀的玩家。最后，随机选取一个得票最多的玩家作为被杀对象。预言家行动：存活的预言家玩家通过 RoleAIManager 的 act_at_night 方法进行思考和查看，选择要查验的玩家，并得知其身份。女巫行动：存活的女巫玩家根据狼人杀人情况，通过 RoleAIManager 的...</div></div></div></a><a class="pagination-related" href="/2025/01/26/llm_nope/" title="LLM实践2:大模型长度外推简单实践"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-26</div><div class="info-item-2">LLM实践2:大模型长度外推简单实践</div></div><div class="info-2"><div class="info-item-1">暑期实习的时候面试经常碰到面试官问如何拓展LLM的上下文，现在已经是标准的八股回答：Dynamic NTK，NTK Aware插值，YaRN等方法但是有的需要设计到微调，则比较麻烦，也有部分方法不需要微调，但是也没有系统性验证过可行性，现在闲来无事想利用空闲时间跑跑代码看看效果   具体的理论细节可以参考这篇博客：https://blog.csdn.net/v_JULY_v/article/details/135072211 本次实验采用LLaMA-2-7B,数据使用BAAI提供的数据，随机抽样了5000条进行预训练or推理 本实验将使用LLaMA_Factory&#x3D;&#x3D;0.9.1, transformers&#x3D;&#x3D;4.46.1,显卡为NVIDIA A100-PCIE-40GB * 2max length&#x3D;8K，batch_size&#x3D;1,epoch&#x3D;1 GPU20GB ~ 30GB   实验结论   RoPE Type Max Length Training Loss Training Loss...</div></div></div></a><a class="pagination-related" href="/2024/06/15/llm_practice_1/" title="LLM实践:意图识别下的LLM与传统模型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-15</div><div class="info-item-2">LLM实践:意图识别下的LLM与传统模型</div></div><div class="info-2"><div class="info-item-1">在实习工作中遇到过许多意图识别的场景，在LLM阶段似乎为复杂意图识别任务提供了可能性，但是事实真是如此吗？ 受到腾讯混元团队结论的启发：在意图识别、实体抽取等任务上，还是不如传统的小模型做的好，除非意图识别很复杂的，或者实体抽取很复杂的内容，这种情况小模型也做不好 于是在这里打算以几个场景来通过实验论证 常见场景 文本内容超过小模型处理长度 任务需要复杂推理能力  实验设计 复杂任务下的意图识别 简单任务下的意图识别  实验过程数据介绍及预处理 腾讯业内场景数据，意图识别，5个类别，涉及到复杂逻辑推理，训练2K条，测试1K条 Standford&#x2F;imdb,二分类，简单任务  模型选取 Qwen&#x2F;Qwen2.5-14B-Instruct FacebookAI&#x2F;xlm-roberta-large SequenceClassificationModel(Qwen2.5-14B-Instruct)冻结主干，微调分类头 LoRA(Qwen2.5-14B-Instruct)   FUll...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">QianLi Yang</div><div class="author-info-description">不定时更新程序员成长之路~</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/YangQianli92" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:chainllie92@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/Serein_Young" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Language-Agents-with-Reinforcement-Learning-for-Strategic-Play-in-the-Werewolf-Game"><span class="toc-number">1.</span> <span class="toc-text">#1 Language Agents with Reinforcement Learning for Strategic Play in the Werewolf Game</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%9A%90%E8%97%8F%E8%A7%92%E8%89%B2%E6%8E%A8%E5%AF%BC%EF%BC%88Hidden-Role-Deduction%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1. 隐藏角色推导（Hidden Role Deduction）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%9A%E6%A0%B7%E5%8C%96%E8%A1%8C%E5%8A%A8%E7%94%9F%E6%88%90%EF%BC%88Diverse-Action-Generation%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2. 多样化行动生成（Diverse Action Generation）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9F%BA%E4%BA%8E%E7%A7%8D%E7%BE%A4%E7%9A%84RL%E8%AE%AD%E7%BB%83%EF%BC%88Population-Based-RL-Training%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">3. 基于种群的RL训练（Population-Based RL Training）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E8%97%8F%E8%A7%92%E8%89%B2%E6%8E%A8%E5%AF%BC"><span class="toc-number">1.3.1.</span> <span class="toc-text">隐藏角色推导</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E6%A0%B7%E5%8C%96%E8%A1%8C%E5%8A%A8%E7%94%9F%E6%88%90"><span class="toc-number">1.3.2.</span> <span class="toc-text">多样化行动生成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%A7%8D%E7%BE%A4%E7%9A%84RL%E8%AE%AD%E7%BB%83"><span class="toc-number">1.3.3.</span> <span class="toc-text">基于种群的RL训练</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6%EF%BC%88Case-Studies%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">1. 案例研究（Case Studies）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BE%AA%E7%8E%AF%E8%B5%9B%EF%BC%88Round-Robin-Tournament%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">2. 循环赛（Round-Robin Tournament）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BA%BA%E6%9C%BA%E5%AE%9E%E9%AA%8C%EF%BC%88Human-Agent-Experiments%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">3. 人机实验（Human-Agent Experiments）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B6%88%E8%9E%8D%E7%A0%94%E7%A9%B6%EF%BC%88Ablation-Study%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">4. 消融研究（Ablation Study）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B6%E4%BB%96%E5%AE%9E%E9%AA%8C%E5%92%8C%E8%AE%A8%E8%AE%BA"><span class="toc-number">1.8.</span> <span class="toc-text">5. 其他实验和讨论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Self-attention-policy-architecture"><span class="toc-number">1.9.</span> <span class="toc-text">Self-attention policy architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">1.10.</span> <span class="toc-text">作用</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/03/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A01/" title="LLM论文阅读:RAG-MCP：基于强化学习的语言代理在狼人游戏中的战略玩法">LLM论文阅读:RAG-MCP：基于强化学习的语言代理在狼人游戏中的战略玩法</a><time datetime="2025-06-03T04:46:48.000Z" title="发表于 2025-06-03 12:46:48">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/03/MCP-RAG/" title="LLM论文阅读:RAG-MCP：通过检索增强生成技术缓解大型语言模型工具选择中的提示膨胀问题">LLM论文阅读:RAG-MCP：通过检索增强生成技术缓解大型语言模型工具选择中的提示膨胀问题</a><time datetime="2025-06-03T04:46:48.000Z" title="发表于 2025-06-03 12:46:48">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/29/function_calling/" title="LLM实践:function calling工具调用">LLM实践:function calling工具调用</a><time datetime="2025-05-29T12:44:48.000Z" title="发表于 2025-05-29 20:44:48">2025-05-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/13/langrensha/" title="LLM实践:基于LLM的狼人杀文字版游戏">LLM实践:基于LLM的狼人杀文字版游戏</a><time datetime="2025-05-13T12:44:48.000Z" title="发表于 2025-05-13 20:44:48">2025-05-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/28/eign/" title="Equivariant Interaction-Aware Graph Network for Predicting the Binding Affinity of Protein-Ligand">Equivariant Interaction-Aware Graph Network for Predicting the Binding Affinity of Protein-Ligand</a><time datetime="2025-02-28T12:44:48.000Z" title="发表于 2025-02-28 20:44:48">2025-02-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By QianLi Yang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
