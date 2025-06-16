@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LLM论文阅读-狼人杀系列5 Werewolf Arena | QianLi Yang</title><meta name="author" content="QianLi Yang"><meta name="copyright" content="QianLi Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Werewolf Arena: A Case Study in LLM Evaluation via Social Deduction Authors: Suma Bailis, Jane Friedhoff, Feiyang Chen This paper introduces Werewolf Arena, a novel framework for evaluating large lang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LLM论文阅读-狼人杀系列5 Werewolf Arena">
+<meta property="og:url" content="http://example.com/2025/06/16/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A05/index.html">
+<meta property="og:site_name" content="QianLi Yang">
+<meta property="og:description" content="Werewolf Arena: A Case Study in LLM Evaluation via Social Deduction Authors: Suma Bailis, Jane Friedhoff, Feiyang Chen This paper introduces Werewolf Arena, a novel framework for evaluating large lang">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/head.jpg">
+<meta property="article:published_time" content="2025-06-16T04:46:48.000Z">
+<meta property="article:modified_time" content="2025-06-16T14:04:20.839Z">
+<meta property="article:author" content="QianLi Yang">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Paper">
+<meta property="article:tag" content="werewolf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/head.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/06/16/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A05/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LLM论文阅读-狼人杀系列5 Werewolf Arena',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/YangQianli92"><i class="fa-fw fab fa-github"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">QianLi Yang</span></a><a class="nav-page-title" href="/"><span class="site-name">LLM论文阅读-狼人杀系列5 Werewolf Arena</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/YangQianli92"><i class="fa-fw fab fa-github"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">LLM论文阅读-狼人杀系列5 Werewolf Arena</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-16T04:46:48.000Z" title="发表于 2025-06-16 12:46:48">2025-06-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-16T14:04:20.839Z" title="更新于 2025-06-16 22:04:20">2025-06-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://papers.cool/arxiv/2407.13943">Werewolf Arena: A Case Study in LLM Evaluation via Social Deduction</a></p>
+<p><strong>Authors</strong>: <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Suma%20Bailis">Suma Bailis</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Jane%20Friedhoff">Jane Friedhoff</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Feiyang%20Chen">Feiyang Chen</a></p>
+<p>This paper introduces Werewolf Arena, a novel framework for evaluating large language models (LLMs) through the lens of the classic social deduction game, Werewolf. In Werewolf Arena, LLMs compete against each other, navigating the game’s complex dynamics of deception, deduction, and persuasion. The framework introduces a dynamic turn-taking system based on bidding, mirroring real-world discussions where individuals strategically choose when to speak. We demonstrate the framework’s utility through an arena-style tournament featuring Gemini and GPT models. Our results reveal distinct strengths and weaknesses in the models’ strategic reasoning and communication. These findings highlight Werewolf Arena’s potential as a challenging and scalable LLM benchmark.</p>
+<p><strong>Subjects</strong>: <a target="_blank" rel="noopener" href="https://papers.cool/arxiv/cs.CL">Computation and Language</a> , <a target="_blank" rel="noopener" href="https://papers.cool/arxiv/cs.AI">Artificial Intelligence</a></p>
+<p><strong>Publish</strong>: 2024-07-18 23:41:05 UTC</p>
+<p><strong>Q</strong>: 这篇论文试图解决什么问题？</p>
+<p><strong>A</strong>: 这篇论文介绍了一个名为”Werewolf Arena”的新框架，旨在通过经典的社交推理游戏——狼人杀（Werewolf）的视角，评估大型语言模型（LLMs）。它试图解决的问题是如何评估和提高AI在复杂社交环境中的认知能力，例如理解他人意图、处理欺骗性信息以及在复杂社交场合中令人信服地沟通。这些技能对于创建真正类人的AI至关重要，但传统基准测试往往无法充分评估这些细微的技能。</p>
+<p>具体来说，论文通过以下几个方面来解决这个问题：</p>
+<ol>
+<li><p><strong>社交推理游戏的复杂性</strong>：利用狼人杀游戏（Werewolf）的不确定性环境，要求玩家使用多种推理技能，如时间推理、演绎推理和归纳推理。</p>
+</li>
+<li><p><strong>战略沟通的重要性</strong>：通过引入基于竞价的动态轮流发言系统，反映了现实世界中个体在讨论中策略性地选择何时发言的情况。</p>
+</li>
+<li><p><strong>模型的相对技能评估</strong>：通过让模型在Werewolf Arena中相互竞争，评估它们在战略推理和沟通方面的优势和劣势。</p>
+</li>
+<li><p><strong>挑战和可扩展的LLM基准</strong>：Werewolf Arena作为一个具有挑战性和可扩展性的基准，可以用于评估和比较不同LLMs的性能。</p>
+</li>
+<li><p><strong>社交动态、合作和欺骗的模拟</strong>：通过社交推理游戏，研究社交动态、合作和欺骗行为，这对于理解和改进AI在复杂社交互动中的性能至关重要。</p>
+</li>
+<li><p><strong>动态竞争中的LLM评估</strong>：提供一种新的基准测试方法，评估LLMs在与其他模型的动态竞争中利用合作、欺骗和战略沟通的能力。</p>
+</li>
+</ol>
+<p>通过这些方法，论文旨在建立一个更全面的评估框架，以推动LLMs在模拟人类社交互动方面的发展。</p>
+<p><strong>Q</strong>: 有哪些相关研究？</p>
+<p><strong>A</strong>: 论文中提到了多个与社交推理游戏（Social Deduction Games, SDGs）和大型语言模型（LLMs）相关的研究领域和具体工作。以下是一些关键的相关研究和它们的贡献：</p>
+<ol>
+<li><p><strong>社交互动和战略推理的模拟</strong>：</p>
+<ul>
+<li>使用LLMs改进基于代理的社交模拟，使代理能够进行沟通、推理、解决问题和战略规划。</li>
+<li>在复杂社交环境中模拟人类行为，以及创建更具说服力和能力的非玩家角色（NPCs）。</li>
+</ul>
+</li>
+<li><p><strong>社交推理游戏</strong>：</p>
+<ul>
+<li>研究社交动态、合作和欺骗，使用SDGs作为研究这些行为的途径。</li>
+</ul>
+</li>
+<li><p><strong>开放式LLMs基准测试</strong>：</p>
+<ul>
+<li>相对于静态推理基准，更少关注动态、竞争性评估LLMs的平台。</li>
+</ul>
+</li>
+<li><p><strong>Werewolf游戏的研究</strong>：</p>
+<ul>
+<li>展示了能够适应沟通策略的复杂代理，使用演绎推理进行最优动作选择，以及在游戏过程中使用系统2思维。</li>
+</ul>
+</li>
+<li><p><strong>代理学习和改进技术</strong>：</p>
+<ul>
+<li>探索了提高代理学习能力的技术，如检索和反思机制。</li>
+</ul>
+</li>
+<li><p><strong>游戏日志和多模态数据集</strong>：</p>
+<ul>
+<li>创建了包含游戏日志和多模态工件的数据集，用于训练代理和建立基准。</li>
+</ul>
+</li>
+<li><p><strong>特定模型和技术的研究</strong>：</p>
+<ul>
+<li>对Google的Gemini和OpenAI的GPT模型系列的研究，包括Gemini 1.5 Pro、Gemini Pro、Gemini Flash、GPT-4、GPT-4o和GPT-3.5。</li>
+</ul>
+</li>
+<li><p><strong>辩论动态分析</strong>：</p>
+<ul>
+<li>研究了辩论过程中的信息（或错误信息）交换、联盟形成和说服策略。</li>
+</ul>
+</li>
+<li><p><strong>Seer角色的评估</strong>：</p>
+<ul>
+<li>分析了不同模型如何处理Seer角色的困境，包括何时公开自己的角色或另一个玩家的角色。</li>
+</ul>
+</li>
+</ol>
+<p>这些研究为Werewolf Arena框架提供了理论和技术基础，并帮助展示了该框架在评估LLMs方面的潜力。论文还提到了一些具体的研究工作，例如Jin等人（2024）关于适应沟通策略的研究，Xu等人（2024）关于演绎推理的研究，以及Lai等人（2022）关于创建多模态数据集的工作。这些研究展示了在社交推理游戏中应用LLMs的多样性和深度。</p>
+<p><strong>Q</strong>: 论文如何解决这个问题？</p>
+<p><strong>A</strong>: 论文通过以下几个关键步骤来解决评估大型语言模型（LLMs）在社交推理环境中的表现问题：</p>
+<ol>
+<li><p><strong>引入Werewolf Arena框架</strong>：创建一个新的评估框架，使用狼人杀（Werewolf）这一经典的社交推理游戏作为评估环境。</p>
+</li>
+<li><p><strong>动态轮流发言系统</strong>：设计了一种基于竞价的动态轮流发言系统，允许玩家根据自己的战略需求来决定何时发言，这模仿了现实世界中群体讨论的自然流程。</p>
+</li>
+<li><p><strong>代理架构</strong>：为代理（即参与游戏的AI模型）配备了一系列必要的动作，包括投票、辩论、竞价发言和特殊角色动作（如Seer的调查、Doctor的保护等）。</p>
+</li>
+<li><p><strong>记忆流</strong>：每个代理都有一个记忆流，记录所有游戏级事件和基于角色的特权信息，使代理能够在后续回合中回忆相关信息和模式。</p>
+</li>
+<li><p><strong>平衡的框架设计</strong>：确保了Villager和Werewolf角色之间的胜率相对平衡，从而提供一个公平的比较环境。</p>
+</li>
+<li><p><strong>模型评估</strong>：通过在Werewolf Arena中进行的锦标赛，评估了不同LLMs（如Google的Gemini和OpenAI的GPT模型）的相对技能。</p>
+</li>
+<li><p><strong>辩论动态分析</strong>：研究了辩论过程中的动态，包括信息交换、联盟形成和说服策略，以及它们如何影响玩家的投票决策。</p>
+</li>
+<li><p><strong>Seer角色的深入评估</strong>：特别分析了Seer角色的表现，包括他们如何平衡信息披露的风险与收益，以及如何说服其他玩家。</p>
+</li>
+<li><p><strong>公开代码和工具</strong>：为了促进未来的研究，作者公开了Werewolf Arena的代码和工具，允许其他研究者测试自己的模型。</p>
+</li>
+<li><p><strong>考虑局限性和伦理问题</strong>：论文在最后讨论了研究的局限性，并强调了在AI系统中实施强有力的保障措施和透明机制的必要性。</p>
+</li>
+</ol>
+<p>通过这些方法，论文不仅展示了Werewolf Arena作为一个评估LLMs社交推理能力的基准的潜力，而且还提供了一种新的方式来理解和改进AI在动态社交互动环境中的表现。</p>
+<p><strong>Q</strong>: 论文做了哪些实验？</p>
+<p><strong>A</strong>: 论文中进行了一系列的实验来评估和比较不同大型语言模型（LLMs）在Werewolf Arena框架下的表现。以下是主要的实验内容：</p>
+<ol>
+<li><p><strong>基准性能评估</strong>：通过内部家族循环赛（intra-family round-robin tournaments），在Gemini和GPT家族的模型之间进行竞争，以建立基准性能，并评估各自家族内模型的相对技能。</p>
+</li>
+<li><p><strong>角色扮演评估</strong>：让模型在Villager和Werewolf的角色之间交替，以确保评估的公平性，因为这两种角色在游戏中具有不同的目标和策略。</p>
+</li>
+<li><p><strong>头对头对决</strong>：在内部家族循环赛后，表现最佳的模型（Gemini 1.5 Pro和GPT-4）进行了10场头对头的比赛，以评估它们在战略推理和社交推理方面的相对技能。</p>
+</li>
+<li><p><strong>辩论动态分析</strong>：研究了辩论过程中的出价分布，以及辩论如何影响玩家的立场和共识形成。</p>
+</li>
+<li><p><strong>Seer角色的深入评估</strong>：分析了不同模型如何处理Seer角色的困境，包括何时公开自己的角色或另一个玩家的角色，以及这些决策如何影响游戏结果。</p>
+</li>
+<li><p><strong>投票动态模拟</strong>：通过模拟投票（synthetic votes）来分析每条对话对玩家立场的影响，这些模拟投票虽然不影响实际游戏，但提供了一个衡量其他玩家如何接受每条对话的代理。</p>
+</li>
+<li><p><strong>Seer表现的定量分析</strong>：收集并分析了关于Seer角色的关键性能指标，如每局游戏的揭示次数、首次揭示轮次、正确识别狼人的比例、被村民相信的比例以及揭示反效果的比例。</p>
+</li>
+<li><p><strong>出价行为和繁复性分析</strong>：比较了GPT-4和Gemini 1.5 Pro作为狼人和村民时的出价分布，以及它们在辩论中的发言频率。</p>
+</li>
+<li><p><strong>沟通风格和策略的定性观察</strong>：通过分析游戏日志，研究了不同模型在沟通风格和策略上的差异，例如GPT-4倾向于更正式、更长的发言，而Gemini 1.5 Pro则表现出更多的情感表达和幽默感。</p>
+</li>
+</ol>
+<p>这些实验结果揭示了不同模型在战略推理、沟通和说服策略方面的优势和劣势，同时也展示了Werewolf Arena作为一个评估LLMs社交推理能力的基准的潜力。</p>
+<p><strong>Q</strong>: 有什么可以进一步探索的点？</p>
+<p><strong>A</strong>: 论文中提出了Werewolf Arena作为一个评估大型语言模型（LLMs）在社交推理环境中表现的框架，并进行了一系列的实验。尽管这项研究提供了有价值的见解和结果，但仍有一些可以进一步探索的领域：</p>
+<ol>
+<li><p><strong>更复杂的游戏环境</strong>：当前的Werewolf游戏环境相对简化，未来的研究可以考虑更复杂的游戏设置，包括更多的角色、更丰富的游戏机制和更长的游戏轮次。</p>
+</li>
+<li><p><strong>更大规模的实验</strong>：论文中提到的实验数量有限（每对模型10场比赛），为了获得更具有统计意义的结果，可以进行更大规模的实验。</p>
+</li>
+<li><p><strong>更深入的角色分析</strong>：除了Seer角色之外，可以对其他角色（如Werewolf、Doctor等）的表现进行更深入的分析，以了解不同角色对游戏结果的影响。</p>
+</li>
+<li><p><strong>跨模型的策略比较</strong>：研究不同模型在采取特定策略时的表现，例如信息隐藏、误导对手、建立信任等，并比较哪些策略在特定情境下更有效。</p>
+</li>
+<li><p><strong>代理间的协作与竞争</strong>：探索LLMs在团队协作和竞争中的行为，例如如何识别并利用团队成员的优势，或如何对抗对手的策略。</p>
+</li>
+<li><p><strong>长期记忆与学习</strong>：研究LLMs如何利用长期记忆来学习游戏过程中的模式和策略，并在未来的游戏中应用这些知识。</p>
+</li>
+<li><p><strong>个性化与适应性</strong>：探索LLMs在适应不同游戏风格和对手策略方面的个性化能力，以及它们如何调整自己的行为以提高游戏表现。</p>
+</li>
+<li><p><strong>多模态输入与输出</strong>：考虑将多模态输入（如图像、声音）和输出（如表情、肢体语言）纳入游戏环境，以更全面地模拟人类的社交互动。</p>
+</li>
+<li><p><strong>伦理与安全性</strong>：深入研究LLMs在社交推理游戏中的伦理问题，确保它们的使用不会对社会产生负面影响。</p>
+</li>
+<li><p><strong>跨领域应用</strong>：探索Werewolf Arena框架在其他领域的应用潜力，例如教育、培训、社交技能评估等。</p>
+</li>
+<li><p><strong>模型的泛化能力</strong>：研究LLMs在Werewolf Arena中学习到的策略和技能如何泛化到其他社交推理游戏或现实世界的社交场景中。</p>
+</li>
+<li><p><strong>实时策略调整</strong>：研究LLMs在游戏过程中实时调整策略的能力，以及它们如何响应游戏环境的动态变化。</p>
+</li>
+</ol>
+<p>这些探索点可以帮助研究者更全面地理解LLMs在社交推理任务中的表现，并推动这些模型在更广泛的应用场景中的发展。</p>
+<p><strong>Q</strong>: 总结一下论文的主要内容</p>
+<p><strong>A</strong>: 这篇论文的主要内容可以概括为以下几个要点：</p>
+<ol>
+<li><p><strong>研究背景</strong>：介绍了评估大型语言模型（LLMs）在复杂社交环境中的认知能力的重要性，以及传统基准测试在评估这些能力方面的局限性。</p>
+</li>
+<li><p><strong>Werewolf Arena框架</strong>：提出了一个新的评估框架Werewolf Arena，该框架通过狼人杀游戏来评估LLMs在社交推理、欺骗、说服等复杂社交互动中的表现。</p>
+</li>
+<li><p><strong>动态轮流发言系统</strong>：引入了基于竞价的动态轮流发言机制，以模拟现实世界中的讨论场景，允许代理（模型）根据战略需求选择发言时机。</p>
+</li>
+<li><p><strong>代理架构</strong>：描述了代理（AI模型）的架构，包括它们的核心动作、特殊角色动作和记忆流，以及如何利用这些记忆来指导游戏行为。</p>
+</li>
+<li><p><strong>实验设计</strong>：通过锦标赛形式的实验，评估了不同LLMs（如Google的Gemini和OpenAI的GPT模型）在Werewolf Arena中的表现，包括内部家族循环赛和头对头对决。</p>
+</li>
+<li><p><strong>辩论动态分析</strong>：研究了辩论过程中的出价分布、对话对玩家立场的影响，以及如何通过模拟投票来分析对话对玩家对齐和共识的影响。</p>
+</li>
+<li><p><strong>Seer角色评估</strong>：深入分析了Seer角色的表现，包括其在披露信息时面临的风险和收益，以及不同模型在处理这一角色时的策略差异。</p>
+</li>
+<li><p><strong>结果与发现</strong>：揭示了不同模型在战略推理、沟通风格和操纵策略方面的优势和劣势，以及这些因素如何影响它们在社交推理游戏中的成功。</p>
+</li>
+<li><p><strong>框架的潜力</strong>：强调了Werewolf Arena作为一个挑战性和可扩展的基准测试，用于评估LLMs在社交推理游戏中的表现，并指出了其相对于传统基准测试的优势。</p>
+</li>
+<li><p><strong>局限性和伦理考虑</strong>：讨论了研究的局限性，包括简化的游戏环境、有限的实验规模和潜在的伦理问题，并强调了在AI系统中实施保障措施和透明机制的重要性。</p>
+</li>
+<li><p><strong>公开资源</strong>：为了促进未来的研究，作者公开了Werewolf Arena的代码和工具，鼓励其他研究者使用和扩展这一框架。</p>
+</li>
+</ol>
+<p>论文通过Werewolf Arena框架，为评估和理解LLMs在复杂社交互动中的性能提供了新的视角和方法。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">QianLi Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://yangqianli92.github.io/">https://yangqianli92.github.io/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">QianLi Yang</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/Paper/">Paper</a><a class="post-meta__tags" href="/tags/werewolf/">werewolf</a></div><div class="post-share"><div class="social-share" data-image="/images/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/16/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A04/" title="LLM论文阅读-狼人杀系列4 利用多智能体强化学习训练社交推理语言模型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">LLM论文阅读-狼人杀系列4 利用多智能体强化学习训练社交推理语言模型</div></div><div class="info-2"><div class="info-item-1">Training Language Models for Social Deduction with Multi-Agent Reinforcement LearningAuthors: Bidipta Sarkar, Warren Xia, C. Karen Liu, Dorsa Sadigh Communicating in natural language is a powerful tool in multi-agent settings, as it enables independent agents to share information in partially observable settings and allows zero-shot coordination with humans. However, most prior works are limited as they either rely on training with large amounts of human demonstrations or lack the ability to...</div></div></div></a><a class="pagination-related" href="/2025/06/15/o1%E5%8E%9F%E7%90%86/" title="GPT-o1原理学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">GPT-o1原理学习</div></div><div class="info-2"><div class="info-item-1">GPT-o1原理OpenAI o1原理逆向工程图解的分析，O1的训练过程可归纳为以下阶段和核心机制：  一、预训练阶段（Pre-training） 数据配比调整O1的基座模型重新训练（非GPT-4o微调），大幅增加逻辑类数据（如STEM学科、代码、论文），减少通用知识数据，导致O1 mini“逻辑推理极强但世界知识弱”。 目标与传统LLM一致通过Next Token Prediction学习语言、基础推理等能力，但通过数据优化侧重逻辑内化。   二、后训练阶段（Post-training） 指令微调（SFT）   使用逻辑推理类指令数据增强模型遵循指令的能力，为后续生成Hidden CoT铺垫。  Let’s Verify Step by Step技术继承  数据风格：中间过程采用口语化、长文本、含反思纠错的结构（例：”wait a...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/06/03/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A01/" title="LLM论文阅读-狼人杀系列 强化学习智能体在狼人杀中的策略玩法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-03</div><div class="info-item-2">LLM论文阅读-狼人杀系列 强化学习智能体在狼人杀中的策略玩法</div></div><div class="info-2"><div class="info-item-1">#1 Language Agents with Reinforcement Learning for Strategic Play in the Werewolf GameAuthors: Zelai Xu, Chao Yu, Fei Fang, Yu Wang, Yi Wu Agents built with large language models (LLMs) have shown great potential across a wide range of domains. However, in complex decision-making tasks, pure LLM-based agents tend to exhibit intrinsic bias in their choice of actions, which is inherited from the model’s training data and results in suboptimal performance. To develop strategic language agents,...</div></div></div></a><a class="pagination-related" href="/2025/06/10/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A02/" title="LLM论文阅读-狼人杀系列 探索LLM在社交类游戏的应用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-10</div><div class="info-item-2">LLM论文阅读-狼人杀系列 探索LLM在社交类游戏的应用</div></div><div class="info-2"><div class="info-item-1">Exploring Large Language Models for Communication Games: An Empirical Study on Werewolf  Authors: Yuzhuang Xu, Shuo Wang, Peng Li, Fuwen Luo, Xiaolong Wang, Weidong Liu, Yang Liu Communication games, which we refer to as incomplete information games that heavily depend on natural language communication, hold significant research value in fields such as economics, social science, and artificial intelligence. In this work, we explore the problem of how to engage large language models (LLMs) in...</div></div></div></a><a class="pagination-related" href="/2025/06/16/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A04/" title="LLM论文阅读-狼人杀系列4 利用多智能体强化学习训练社交推理语言模型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-16</div><div class="info-item-2">LLM论文阅读-狼人杀系列4 利用多智能体强化学习训练社交推理语言模型</div></div><div class="info-2"><div class="info-item-1">Training Language Models for Social Deduction with Multi-Agent Reinforcement LearningAuthors: Bidipta Sarkar, Warren Xia, C. Karen Liu, Dorsa Sadigh Communicating in natural language is a powerful tool in multi-agent settings, as it enables independent agents to share information in partially observable settings and allows zero-shot coordination with humans. However, most prior works are limited as they either rely on training with large amounts of human demonstrations or lack the ability to...</div></div></div></a><a class="pagination-related" href="/2025/06/12/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A03/" title="LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-12</div><div class="info-item-2">LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度</div></div><div class="info-2"><div class="info-item-1">Werewolf: A Straightforward Game Framework with TTS for Improved User Engagement  Authors: Qihui Fan, Enfu Nan, Wenbo Li, Lei Lu, Pu Zhao, Yanzhi Wang The growing popularity of social deduction game systems for both business applications and AI research has greatly benefited from the rapid advancements in Large Language Models (LLMs), which now demonstrate stronger reasoning and persuasion capabilities. Especially with the raise of DeepSeek R1 and V3 models, LLMs should enable a more...</div></div></div></a><a class="pagination-related" href="/2025/06/03/MCP-RAG/" title="LLM论文阅读:RAG-MCP：通过检索增强生成技术缓解大型语言模型工具选择中的提示膨胀问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-03</div><div class="info-item-2">LLM论文阅读:RAG-MCP：通过检索增强生成技术缓解大型语言模型工具选择中的提示膨胀问题</div></div><div class="info-2"><div class="info-item-1">RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation [PDF5] [Copy] [Kimi19] [REL]Authors: Tiantian Gan, Qiyao Sun Large language models (LLMs) struggle to effectively utilize a growing number of external tools, such as those defined by the Model Context Protocol (MCP)\cite{IntroducingMCP}, due to prompt bloat and selection complexity. We introduce RAG-MCP, a Retrieval-Augmented Generation framework that overcomes this challenge by offloading tool...</div></div></div></a><a class="pagination-related" href="/2025/06/15/o1%E5%8E%9F%E7%90%86/" title="GPT-o1原理学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">GPT-o1原理学习</div></div><div class="info-2"><div class="info-item-1">GPT-o1原理OpenAI o1原理逆向工程图解的分析，O1的训练过程可归纳为以下阶段和核心机制：  一、预训练阶段（Pre-training） 数据配比调整O1的基座模型重新训练（非GPT-4o微调），大幅增加逻辑类数据（如STEM学科、代码、论文），减少通用知识数据，导致O1 mini“逻辑推理极强但世界知识弱”。 目标与传统LLM一致通过Next Token Prediction学习语言、基础推理等能力，但通过数据优化侧重逻辑内化。   二、后训练阶段（Post-training） 指令微调（SFT）   使用逻辑推理类指令数据增强模型遵循指令的能力，为后续生成Hidden CoT铺垫。  Let’s Verify Step by Step技术继承  数据风格：中间过程采用口语化、长文本、含反思纠错的结构（例：”wait a...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">QianLi Yang</div><div class="author-info-description">不定时更新程序员成长之路~</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/YangQianli92" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:chainllie92@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/Serein_Young" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/16/%E7%8B%BC%E4%BA%BA%E6%9D%80/" title="无标题">无标题</a><time datetime="2025-06-16T10:10:10.792Z" title="发表于 2025-06-16 18:10:10">2025-06-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/16/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A04/" title="LLM论文阅读-狼人杀系列4 利用多智能体强化学习训练社交推理语言模型">LLM论文阅读-狼人杀系列4 利用多智能体强化学习训练社交推理语言模型</a><time datetime="2025-06-16T04:46:48.000Z" title="发表于 2025-06-16 12:46:48">2025-06-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/16/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A05/" title="LLM论文阅读-狼人杀系列5 Werewolf Arena">LLM论文阅读-狼人杀系列5 Werewolf Arena</a><time datetime="2025-06-16T04:46:48.000Z" title="发表于 2025-06-16 12:46:48">2025-06-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/15/o1%E5%8E%9F%E7%90%86/" title="GPT-o1原理学习">GPT-o1原理学习</a><time datetime="2025-06-15T08:35:48.000Z" title="发表于 2025-06-15 16:35:48">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/12/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A03/" title="LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度">LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度</a><time datetime="2025-06-12T04:46:48.000Z" title="发表于 2025-06-12 12:46:48">2025-06-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By QianLi Yang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

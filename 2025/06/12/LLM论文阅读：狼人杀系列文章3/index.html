@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度 | QianLi Yang</title><meta name="author" content="QianLi Yang"><meta name="copyright" content="QianLi Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Werewolf: A Straightforward Game Framework with TTS for Improved User Engagement  Authors: Qihui Fan, Enfu Nan, Wenbo Li, Lei Lu, Pu Zhao, Yanzhi Wang The growing popularity of social deduction game s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度">
+<meta property="og:url" content="http://example.com/2025/06/12/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A03/index.html">
+<meta property="og:site_name" content="QianLi Yang">
+<meta property="og:description" content="Werewolf: A Straightforward Game Framework with TTS for Improved User Engagement  Authors: Qihui Fan, Enfu Nan, Wenbo Li, Lei Lu, Pu Zhao, Yanzhi Wang The growing popularity of social deduction game s">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/head.jpg">
+<meta property="article:published_time" content="2025-06-12T04:46:48.000Z">
+<meta property="article:modified_time" content="2025-06-16T13:53:52.045Z">
+<meta property="article:author" content="QianLi Yang">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Paper">
+<meta property="article:tag" content="werewolf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/head.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/06/12/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A03/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/YangQianli92"><i class="fa-fw fab fa-github"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">QianLi Yang</span></a><a class="nav-page-title" href="/"><span class="site-name">LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/YangQianli92"><i class="fa-fw fab fa-github"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-12T04:46:48.000Z" title="发表于 2025-06-12 12:46:48">2025-06-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-16T13:53:52.045Z" title="更新于 2025-06-16 21:53:52">2025-06-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://papers.cool/arxiv/2506.00160">Werewolf: A Straightforward Game Framework with TTS for Improved User Engagement</a> </p>
+<p><strong>Authors</strong>: <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Qihui%20Fan">Qihui Fan</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Enfu%20Nan">Enfu Nan</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Wenbo%20Li">Wenbo Li</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Lei%20Lu">Lei Lu</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Pu%20Zhao">Pu Zhao</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=author&query=Yanzhi%20Wang">Yanzhi Wang</a></p>
+<p>The growing popularity of social deduction game systems for both business applications and AI research has greatly benefited from the rapid advancements in Large Language Models (LLMs), which now demonstrate stronger reasoning and persuasion capabilities. Especially with the raise of DeepSeek R1 and V3 models, LLMs should enable a more engaging experience for human players in LLM-agent-based social deduction games like Werewolf. Previous works either fine-tuning, advanced prompting engineering, or additional experience pool to achieve engaging text-format Werewolf game experience. We propose a novel yet straightforward LLM-based Werewolf game system with tuned Text-to-Speech(TTS) models designed for enhanced compatibility with various LLM models, and improved user engagement. We argue with ever enhancing LLM reasoning, extra components will be unnecessary in the case of Werewolf.</p>
+<p><strong>Subject</strong>: <a target="_blank" rel="noopener" href="https://papers.cool/arxiv/cs.CL">Computation and Language</a></p>
+<p><strong>Publish</strong>: 2025-05-30 18:58:57 UTC</p>
+<p><strong>Q</strong>: 这篇论文试图解决什么问题？</p>
+<p><strong>A</strong>: 这篇论文试图解决如何利用大型语言模型（LLMs）构建一个更具吸引力和用户参与度的“狼人杀”（Werewolf）游戏框架的问题。具体而言，它旨在解决以下几个关键问题：</p>
+<ol>
+<li><p><strong>提升LLM在游戏中的自主性和策略性</strong>：</p>
+<ul>
+<li>以往的研究通常依赖于外部模块或复杂的提示工程来增强LLM在游戏中的表现。然而，随着LLM推理能力的不断提升，作者认为足够先进的LLM（如DeepSeek V3、DeepSeek R1和ChatGPT 4o）应该能够独立地进行游戏，而无需额外的外部工具或复杂的提示策略。因此，论文提出了一种简洁的框架，直接通过提示向LLM提供游戏规则和基本策略，让LLM自主地进行角色扮演和策略互动。</li>
+</ul>
+</li>
+<li><p><strong>增强游戏的社交互动性</strong>：</p>
+<ul>
+<li>“狼人杀”游戏的核心在于玩家之间的口头交流和社交推理。然而，现有的框架往往忽视了这一点。因此，作者整合了一个经过微调的文本到语音（TTS）模块，使游戏能够在文本和音频格式之间进行，从而增强游戏的沉浸感和社交互动性。</li>
+</ul>
+</li>
+<li><p><strong>降低系统延迟，提升用户体验</strong>：</p>
+<ul>
+<li>在实时游戏系统中，交互速度至关重要。为了减少用户感知到的延迟，作者设计了一种并行处理架构，让LLM生成文本和TTS生成音频同时进行。这种设计使得语音输出可以在LLM生成第一个文本片段时就开始，而不是等待整个文本生成完成后再开始，从而实现更自然、更流畅的对话体验。</li>
+</ul>
+</li>
+<li><p><strong>提高系统的可扩展性和灵活性</strong>：</p>
+<ul>
+<li>作者设计的框架允许灵活选择人类玩家的数量，以适应不同的游戏场景。此外，游戏角色的提示和规则定义是分开的，这为未来添加更多游戏角色（如猎人、守卫、狼王等）提供了可能。</li>
+</ul>
+</li>
+</ol>
+<p>总的来说，这篇论文的目标是利用先进的LLM技术和TTS技术，构建一个既能够自主进行复杂策略推理，又能够提供沉浸式社交互动体验的“狼人杀”游戏框架。</p>
+<p><strong>Q</strong>: 有哪些相关研究？</p>
+<p><strong>A</strong>: 论文中提到了以下相关研究：</p>
+<ol>
+<li><p><strong>数据集构建与模型微调</strong>：</p>
+<ul>
+<li>Bolin Lai等人在2022年构建了一个多模态数据集，用于模拟社交推理游戏中的说服行为[^1^]。</li>
+<li>Shuang Wu等人在2024年针对“狼人杀”游戏提出了增强LLM推理能力的方法[^2^]。</li>
+<li>Yuzhuang Xu等人在2024年对LLM在“狼人杀”游戏中的表现进行了实证研究[^3^]。</li>
+</ul>
+</li>
+<li><p><strong>LLM在其他策略游戏中的应用</strong>：</p>
+<ul>
+<li>Richard Zhuang等人在2025年提出了Pokerbench，一个用于训练LLM成为专业扑克玩家的框架[^4^]。</li>
+<li>Chenghao Huang等人在2024年提出了PokerGPT，一个轻量级的多玩家德州扑克求解器[^5^]。</li>
+</ul>
+</li>
+<li><p><strong>LLM作为智能体的研究</strong>：</p>
+<ul>
+<li>Junyu Luo等人在2025年对LLM智能体进行了综述，涵盖了方法论、应用和挑战[^6^]。</li>
+</ul>
+</li>
+<li><p><strong>TTS技术</strong>：</p>
+<ul>
+<li>RVC-Boss在2024年提出了GPT-SoVITS，一个结合了生成预训练变换器（GPT）技术和说话者自适应语音转换（SoVITS）技术的模型，用于少样本语音克隆和文本到语音合成[^8^]。</li>
+</ul>
+</li>
+</ol>
+<p>这些研究为本文提出的“狼人杀”游戏框架提供了理论和技术基础，特别是在LLM的推理能力、社交互动性以及TTS技术的应用方面。</p>
+<p><strong>Q</strong>: 论文如何解决这个问题？</p>
+<p><strong>A</strong>: 论文通过以下方法解决如何利用大型语言模型（LLMs）构建更具吸引力和用户参与度的“狼人杀”游戏框架的问题：</p>
+<h3 id="1-提出一个基于LLM的“狼人杀”游戏系统"><a href="#1-提出一个基于LLM的“狼人杀”游戏系统" class="headerlink" title="1. 提出一个基于LLM的“狼人杀”游戏系统"></a>1. 提出一个基于LLM的“狼人杀”游戏系统</h3><ul>
+<li><strong>系统组成</strong>：游戏系统由以下几个模块组成：<ul>
+<li><strong>“狼人杀”游戏模块</strong>：管理游戏流程、执行玩家动作、判断游戏状态。</li>
+<li><strong>玩家模块</strong>：包括人类玩家和由LLM扮演的AI玩家，AI玩家根据分配的角色有不同的行动空间。</li>
+<li><strong>用户参与模块</strong>：并行处理LLM生成的文本和TTS生成的音频，以增强用户参与度。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-设计游戏流程和角色"><a href="#2-设计游戏流程和角色" class="headerlink" title="2. 设计游戏流程和角色"></a>2. 设计游戏流程和角色</h3><ul>
+<li><strong>角色定义</strong>：游戏中包含村民、狼人、预言家和女巫四种角色，每种角色有不同的行动空间：<ul>
+<li>村民：投票、推理</li>
+<li>狼人：投票、推理、杀人</li>
+<li>预言家：投票、推理、揭示</li>
+<li>女巫：投票、推理、夜间行动（使用解药或毒药）</li>
+</ul>
+</li>
+<li><strong>游戏流程</strong>：游戏流程分为夜晚和白天两个阶段。夜晚阶段，特殊角色执行动作；白天阶段，玩家进行讨论和投票，决定淘汰最可疑的玩家。</li>
+</ul>
+<h3 id="3-LLM角色扮演"><a href="#3-LLM角色扮演" class="headerlink" title="3. LLM角色扮演"></a>3. LLM角色扮演</h3><ul>
+<li><strong>变量设计</strong>：为LLM提供必要的游戏信息，如当前活跃玩家、狼人列表、预言家的私密信息、狼人的行动历史、女巫的行动历史和公共游戏历史。</li>
+<li><strong>提示设计</strong>：通过简洁的提示让LLM理解其角色和行动空间，例如在讨论阶段，提示LLM作为狼人隐藏身份，与其他狼人合作，但不暴露身份。</li>
+</ul>
+<h3 id="4-文本到语音（TTS）模块"><a href="#4-文本到语音（TTS）模块" class="headerlink" title="4. 文本到语音（TTS）模块"></a>4. 文本到语音（TTS）模块</h3><ul>
+<li><strong>技术选择</strong>：采用GPT-SoVITS模型，结合生成预训练变换器（GPT）技术和说话者自适应语音转换（SoVITS）技术，实现高质量的语音合成和克隆。</li>
+<li><strong>关键特性</strong>：<ul>
+<li><strong>快速训练</strong>：仅需约一分钟的语音数据即可完成微调。</li>
+<li><strong>零样本能力</strong>：仅需五秒的说话者音频即可进行稳健的文本到语音转换。</li>
+<li><strong>跨语言支持</strong>：支持中文、英文、日文等多种语言。</li>
+</ul>
+</li>
+<li><strong>微调</strong>：针对框架优化语音质量和引入熟悉的声音，提升玩家体验。</li>
+</ul>
+<h3 id="5-用户参与和延迟优化"><a href="#5-用户参与和延迟优化" class="headerlink" title="5. 用户参与和延迟优化"></a>5. 用户参与和延迟优化</h3><ul>
+<li><strong>并行处理</strong>：LLM生成文本和TTS生成音频并行进行，LLM以流式方式生成文本，系统在句法边界（逗号或句号）触发TTS模型生成音频，音频片段通过队列管理，确保顺序播放。</li>
+<li><strong>低延迟设计</strong>：通过在句法边界触发TTS，系统能够在LLM生成第一个文本片段时就开始语音输出，减少用户感知的延迟，实现更自然的对话体验。</li>
+</ul>
+<h3 id="6-系统的可扩展性"><a href="#6-系统的可扩展性" class="headerlink" title="6. 系统的可扩展性"></a>6. 系统的可扩展性</h3><ul>
+<li><strong>玩家数量灵活性</strong>：允许选择不同数量的人类玩家，适应不同的游戏场景。</li>
+<li><strong>角色扩展性</strong>：将游戏角色的提示和规则定义分开，便于未来添加更多角色（如猎人、守卫、狼王等）。</li>
+</ul>
+<p>通过上述方法，论文成功地构建了一个能够自主进行复杂策略推理并提供沉浸式社交互动体验的“狼人杀”游戏框架。</p>
+<p><strong>Q</strong>: 论文做了哪些实验？</p>
+<p><strong>A</strong>: 论文中主要进行了以下几方面的实验和评估：</p>
+<h3 id="1-定性测试（Qualitative-Testing）"><a href="#1-定性测试（Qualitative-Testing）" class="headerlink" title="1. 定性测试（Qualitative Testing）"></a>1. <strong>定性测试（Qualitative Testing）</strong></h3><ul>
+<li><p><strong>延迟测试</strong>：</p>
+<ul>
+<li><strong>测试目的</strong>：评估系统在音频输出时的延迟情况。</li>
+<li><strong>测试方法</strong>：在游戏的讨论阶段，观察系统在生成语音时的响应时间。</li>
+<li><strong>测试结果</strong>：在讨论阶段的开始，尤其是第一个玩家发言时，会有一些初始延迟，这主要是由于触发TTS生成和开始音频播放的开销。但一旦初始化完成，系统运行顺畅，音频播放的持续时间通常超过了LLM生成和TTS合成所需的时间，使得后续的输出可以并行处理并高效排队，从而在整个游戏流程中保持低延迟和自然的交互。</li>
+</ul>
+</li>
+<li><p><strong>AI玩家的策略和表现测试</strong>：</p>
+<ul>
+<li><strong>测试目的</strong>：评估高级LLM在“狼人杀”游戏中的策略和表现。</li>
+<li><strong>测试方法</strong>：通过观察不同角色的AI玩家在游戏中的表现，包括他们的行为、语言风格和策略。</li>
+<li><strong>测试结果</strong>：<ul>
+<li>高级LLM（如DeepSeek V3）表现出强大的自主推理和策略性游戏能力，即使没有依赖外部工具。这些代理展示了与角色一致的行为，例如预言家谨慎地披露信息、女巫根据资源做出决策、狼人进行有说服力的欺骗。</li>
+<li>这些模型经常主动引导讨论，根据上下文转移怀疑对象，并调整语言风格以影响或躲避其他玩家。这些行为不仅表明了角色意识，还表现出通常与经验丰富的玩家相关的领导力和社交协调能力。</li>
+<li>相比之下，能力较弱的LLM（如小规模或量化版本）在连贯性和策略一致性上显著下降。这些模型倾向于产生重复的、通用的陈述，无法适应游戏状态的变化，经常忽略他们的特殊能力。他们的讨论缺乏深度，很少能够持续进行欺骗或形成有说服力的论点。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>API缓存测试</strong>：</p>
+<ul>
+<li><strong>测试目的</strong>：评估API在中断游戏流程时的行为。</li>
+<li><strong>测试方法</strong>：在游戏的第一个夜晚阶段中断游戏流程，并立即开始新游戏。</li>
+<li><strong>测试结果</strong>：发现API可能会返回之前会话中生成的文本，导致与当前游戏上下文不一致。经过测试，这种行为被认为是由API服务器引起的，它可能会比较新查询的提示与之前的提示，并在相似度足够高时返回缓存的生成结果。</li>
+</ul>
+</li>
+<li><p><strong>AI幻觉测试</strong>：</p>
+<ul>
+<li><strong>测试目的</strong>：评估LLM在角色扮演时是否会出现基于现实世界人物身份的偏见。</li>
+<li><strong>测试方法</strong>：观察LLM在角色扮演时是否会对特定人物做出基于其现实世界身份的假设。</li>
+<li><strong>测试结果</strong>：在DeepSeek-V3-0324版本中，LLM会根据角色的真实世界身份做出假设，例如将Jack Ma视为可疑人物，因为他是著名商人，或者将Donald Trump视为不可信的人物，因为他的政治背景，而将周杰伦视为不太可疑的人物，因为他在音乐行业的声誉。这种行为即使在仔细调整提示以减少偏见后仍然存在。然而，使用早期版本的模型（如DeepSeek-V3-1224）和其他LLM（如ChatGPT 4o）时，这种行为出现的频率较低。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-定量评估（Quantitative-Evaluation）"><a href="#2-定量评估（Quantitative-Evaluation）" class="headerlink" title="2. 定量评估（Quantitative Evaluation）"></a>2. <strong>定量评估（Quantitative Evaluation）</strong></h3><ul>
+<li><strong>系统性能评估</strong>：<ul>
+<li><strong>测试目的</strong>：评估系统的整体性能，包括延迟、流畅性和用户参与度。</li>
+<li><strong>测试方法</strong>：通过实际游戏测试，收集用户反馈和系统性能数据。</li>
+<li><strong>测试结果</strong>：系统在大多数情况下能够提供低延迟、自然的音频输出，增强用户的沉浸感和参与度。用户反馈表明，系统在多玩家环境中表现良好，能够支持流畅的对话和互动。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-局限性分析（Limitations-Analysis）"><a href="#3-局限性分析（Limitations-Analysis）" class="headerlink" title="3. 局限性分析（Limitations Analysis）"></a>3. <strong>局限性分析（Limitations Analysis）</strong></h3><ul>
+<li><strong>测试目的</strong>：识别系统在实际应用中的潜在问题和改进方向。</li>
+<li><strong>测试方法</strong>：通过实际运行和用户反馈，分析系统的局限性。</li>
+<li><strong>测试结果</strong>：<ul>
+<li><strong>非完全智能体架构</strong>：系统没有集成外部工具，如检索增强生成（RAG）、持久记忆或结构化知识库，这使得系统在上下文长度限制下运行，可能影响长期战略推理。</li>
+<li><strong>角色扩展性</strong>：当前实现仅支持标准“狼人杀”角色的一个子集，扩展到更复杂的角色会增加角色对齐的难度。</li>
+<li><strong>评估指标</strong>：主要依赖胜负结果的定量评估可能会引入偏差，未来评估应纳入更细粒度的行为指标，如推理深度、讨论中的影响力和欺骗或对齐的成功率。</li>
+<li><strong>语音输入缺失</strong>：系统目前仅支持音频输出，缺乏语音输入功能，限制了其在实时对话互动中的可用性。</li>
+</ul>
+</li>
+</ul>
+<p>通过这些实验和评估，论文展示了其提出的“狼人杀”游戏框架在利用LLM进行自主游戏和增强用户参与度方面的有效性和潜力，同时也指出了需要进一步改进的方向。</p>
+<p><strong>Q</strong>: 有什么可以进一步探索的点？</p>
+<p><strong>A</strong>: 论文中提出了一个基于LLM的“狼人杀”游戏框架，并在多个方面进行了实验和评估。尽管取得了积极的结果，但仍有一些可以进一步探索的点：</p>
+<h3 id="1-完全智能体架构"><a href="#1-完全智能体架构" class="headerlink" title="1. 完全智能体架构"></a>1. <strong>完全智能体架构</strong></h3><ul>
+<li><strong>研究方向</strong>：将外部工具（如检索增强生成RAG、持久记忆和结构化知识库）集成到系统中，以增强LLM的推理能力和长期战略规划。</li>
+<li><strong>潜在价值</strong>：通过引入外部工具，可以解决LLM在上下文长度限制下的问题，提高系统的连贯性和长期战略推理能力。</li>
+</ul>
+<h3 id="2-角色扩展"><a href="#2-角色扩展" class="headerlink" title="2. 角色扩展"></a>2. <strong>角色扩展</strong></h3><ul>
+<li><strong>研究方向</strong>：扩展系统以支持更复杂的“狼人杀”角色，如猎人、丘比特、守卫等。</li>
+<li><strong>潜在价值</strong>：增加角色的多样性可以提高游戏的复杂性和趣味性，同时为LLM提供更复杂的社交互动和策略推理挑战。</li>
+</ul>
+<h3 id="3-更细粒度的评估指标"><a href="#3-更细粒度的评估指标" class="headerlink" title="3. 更细粒度的评估指标"></a>3. <strong>更细粒度的评估指标</strong></h3><ul>
+<li><strong>研究方向</strong>：开发更细粒度的评估指标，如推理深度、讨论中的影响力、欺骗或对齐的成功率等。</li>
+<li><strong>潜在价值</strong>：这些指标可以更全面地评估LLM在游戏中的表现，而不仅仅是胜负结果，从而为系统改进提供更有针对性的反馈。</li>
+</ul>
+<h3 id="4-语音输入功能"><a href="#4-语音输入功能" class="headerlink" title="4. 语音输入功能"></a>4. <strong>语音输入功能</strong></h3><ul>
+<li><strong>研究方向</strong>：为系统添加语音输入功能，以支持实时对话互动。</li>
+<li><strong>潜在价值</strong>：语音输入功能可以提高系统的自然性和用户友好性，使其更适合多人实时互动场景。</li>
+</ul>
+<h3 id="5-减少AI幻觉"><a href="#5-减少AI幻觉" class="headerlink" title="5. 减少AI幻觉"></a>5. <strong>减少AI幻觉</strong></h3><ul>
+<li><strong>研究方向</strong>：进一步研究和开发方法来减少LLM在角色扮演时基于现实世界人物身份的偏见和幻觉。</li>
+<li><strong>潜在价值</strong>：这可以提高游戏的公平性和客观性，确保LLM的决策更多地基于游戏内的信息，而不是现实世界的身份。</li>
+</ul>
+<h3 id="6-多语言支持"><a href="#6-多语言支持" class="headerlink" title="6. 多语言支持"></a>6. <strong>多语言支持</strong></h3><ul>
+<li><strong>研究方向</strong>：扩展TTS模块以支持更多语言，提高系统的多语言适应性。</li>
+<li><strong>潜在价值</strong>：这可以扩大系统的用户群体，使其能够服务于更广泛的国际市场。</li>
+</ul>
+<h3 id="7-用户自定义角色和规则"><a href="#7-用户自定义角色和规则" class="headerlink" title="7. 用户自定义角色和规则"></a>7. <strong>用户自定义角色和规则</strong></h3><ul>
+<li><strong>研究方向</strong>：允许用户自定义角色和游戏规则，以增加游戏的可定制性和灵活性。</li>
+<li><strong>潜在价值</strong>：这可以提高用户的参与度和创造力，同时为LLM提供更丰富的学习和适应环境。</li>
+</ul>
+<h3 id="8-实时反馈和适应"><a href="#8-实时反馈和适应" class="headerlink" title="8. 实时反馈和适应"></a>8. <strong>实时反馈和适应</strong></h3><ul>
+<li><strong>研究方向</strong>：开发实时反馈机制，使LLM能够根据用户的实时反馈动态调整策略和行为。</li>
+<li><strong>潜在价值</strong>：这可以提高系统的响应性和适应性，使其能够更好地应对不同用户的需求和游戏情境。</li>
+</ul>
+<h3 id="9-跨平台支持"><a href="#9-跨平台支持" class="headerlink" title="9. 跨平台支持"></a>9. <strong>跨平台支持</strong></h3><ul>
+<li><strong>研究方向</strong>：将系统扩展到不同的平台，如移动设备、游戏机和虚拟现实环境。</li>
+<li><strong>潜在价值</strong>：这可以提高系统的可访问性和用户覆盖面，使其能够适应不同的使用场景和用户需求。</li>
+</ul>
+<h3 id="10-长期学习和进化"><a href="#10-长期学习和进化" class="headerlink" title="10. 长期学习和进化"></a>10. <strong>长期学习和进化</strong></h3><ul>
+<li><strong>研究方向</strong>：研究如何使LLM在长期游戏中学习和进化，以提高其策略和推理能力。</li>
+<li><strong>潜在价值</strong>：这可以提高系统的长期吸引力和挑战性，使其能够适应不断变化的游戏环境和用户需求。</li>
+</ul>
+<p>这些方向不仅可以进一步提升系统的性能和用户体验，还可以为LLM在复杂社交互动和策略推理中的应用提供更深入的见解。</p>
+<p><strong>Q</strong>: 总结一下论文的主要内容</p>
+<p><strong>A</strong>: 本文提出了一种基于大型语言模型（LLM）的“狼人杀”游戏框架，旨在利用LLM的推理和语言生成能力，为玩家提供更具吸引力和参与度的游戏体验。以下是论文的主要内容总结：</p>
+<h3 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h3><p>“狼人杀”作为一种广受欢迎的社交推理游戏，吸引了众多AI研究者的关注。随着LLM技术的快速发展，其在推理和说服能力方面表现出色，为构建更具吸引力的“狼人杀”游戏系统提供了可能。本文提出了一种新颖的LLM驱动的“狼人杀”游戏框架，通过优化的文本到语音（TTS）模型增强用户体验，并认为随着LLM推理能力的提升，额外的组件和复杂的提示策略将变得不再必要。</p>
+<h3 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h3><h4 id="1-游戏框架设计"><a href="#1-游戏框架设计" class="headerlink" title="1. 游戏框架设计"></a>1. 游戏框架设计</h4><ul>
+<li><strong>模块组成</strong>：游戏系统由“狼人杀”游戏模块、玩家模块和用户参与模块组成。游戏模块管理游戏流程和状态，玩家模块包括人类玩家和由LLM扮演的AI玩家，用户参与模块并行处理LLM生成的文本和TTS生成的音频。</li>
+<li><strong>角色和行动空间</strong>：游戏中包含村民、狼人、预言家和女巫四种角色，每种角色有不同的行动空间，如投票、推理、杀人、揭示和夜间行动。</li>
+<li><strong>游戏流程</strong>：游戏分为夜晚和白天两个阶段，夜晚阶段特殊角色执行动作，白天阶段玩家进行讨论和投票，决定淘汰最可疑的玩家。</li>
+</ul>
+<h4 id="2-LLM角色扮演"><a href="#2-LLM角色扮演" class="headerlink" title="2. LLM角色扮演"></a>2. LLM角色扮演</h4><ul>
+<li><strong>变量设计</strong>：为LLM提供必要的游戏信息，如当前活跃玩家、狼人列表、预言家的私密信息等。</li>
+<li><strong>提示设计</strong>：通过简洁的提示让LLM理解其角色和行动空间，例如在讨论阶段，提示LLM作为狼人隐藏身份，与其他狼人合作，但不暴露身份。</li>
+</ul>
+<h4 id="3-文本到语音（TTS）模块"><a href="#3-文本到语音（TTS）模块" class="headerlink" title="3. 文本到语音（TTS）模块"></a>3. 文本到语音（TTS）模块</h4><ul>
+<li><strong>技术选择</strong>：采用GPT-SoVITS模型，结合生成预训练变换器（GPT）技术和说话者自适应语音转换（SoVITS）技术，实现高质量的语音合成和克隆。</li>
+<li><strong>关键特性</strong>：快速训练（仅需约一分钟的语音数据）、零样本能力（仅需五秒的说话者音频）、跨语言支持（支持中文、英文、日文等）。</li>
+<li><strong>微调</strong>：针对框架优化语音质量和引入熟悉的声音，提升玩家体验。</li>
+</ul>
+<p>####4 . 用户参与和延迟优化</p>
+<ul>
+<li><strong>并行处理</strong>：LLM生成文本和TTS生成音频并行进行，LLM以流式方式生成文本，系统在句法边界（逗号或句号）触发TTS模型生成音频，音频片段通过队列管理，确保顺序播放。</li>
+<li><strong>低延迟设计</strong>：通过在句法边界触发TTS，系统能够在LLM生成第一个文本片段时就开始语音输出，减少用户感知的延迟，实现更自然的对话体验。</li>
+</ul>
+<h3 id="实验与评估"><a href="#实验与评估" class="headerlink" title="实验与评估"></a>实验与评估</h3><h4 id="1-定性测试"><a href="#1-定性测试" class="headerlink" title="1. 定性测试"></a>1. 定性测试</h4><ul>
+<li><strong>延迟测试</strong>：在讨论阶段的开始，尤其是第一个玩家发言时，会有一些初始延迟，但一旦初始化完成，系统运行顺畅，音频播放的持续时间通常超过了LLM生成和TTS合成所需的时间，使得后续的输出可以并行处理并高效排队，从而在整个游戏流程中保持低延迟和自然的交互。</li>
+<li><strong>AI玩家的策略和表现测试</strong>：高级LLM（如DeepSeek V3）表现出强大的自主推理和策略性游戏能力，即使没有依赖外部工具。这些代理展示了与角色一致的行为，例如预言家谨慎地披露信息、女巫根据资源做出决策、狼人进行有说服力的欺骗。相比之下，能力较弱的LLM（如小规模或量化版本）在连贯性和策略一致性上显著下降。</li>
+<li><strong>API缓存测试</strong>：在游戏的第一个夜晚阶段中断游戏流程，并立即开始新游戏，发现API可能会返回之前会话中生成的文本，导致与当前游戏上下文不一致。</li>
+<li><strong>AI幻觉测试</strong>：在DeepSeek-V3-0324版本中，LLM会根据角色的真实世界身份做出假设，例如将Jack Ma视为可疑人物，将Donald Trump视为不可信的人物，而将周杰伦视为不太可疑的人物。这种行为即使在仔细调整提示以减少偏见后仍然存在。</li>
+</ul>
+<h4 id="2-定量评估"><a href="#2-定量评估" class="headerlink" title="2. 定量评估"></a>2. 定量评估</h4><ul>
+<li><strong>系统性能评估</strong>：系统在大多数情况下能够提供低延迟、自然的音频输出，增强用户的沉浸感和参与度。用户反馈表明，系统在多玩家环境中表现良好，能够支持流畅的对话和互动。</li>
+</ul>
+<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><ul>
+<li><strong>非完全智能体架构</strong>：系统没有集成外部工具，如检索增强生成（RAG）、持久记忆和结构化知识库，这使得系统在上下文长度限制下运行，可能影响长期战略推理。</li>
+<li><strong>角色扩展性</strong>：当前实现仅支持标准“狼人杀”角色的一个子集，扩展到更复杂的角色会增加角色对齐的难度。</li>
+<li><strong>评估指标</strong>：主要依赖胜负结果的定量评估可能会引入偏差，未来评估应纳入更细粒度的行为指标，如推理深度、讨论中的影响力和欺骗或对齐的成功率。</li>
+<li><strong>语音输入缺失</strong>：系统目前仅支持音频输出，缺乏语音输入功能，限制了其在实时对话互动中的可用性。</li>
+</ul>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>本文提出的“狼人杀”游戏框架展示了LLM在自主游戏和增强用户参与度方面的潜力。通过优化的TTS技术和并行处理设计，系统能够提供低延迟、自然的音频输出，增强用户的沉浸感和实时互动体验。未来的工作可以进一步探索完全智能体架构、角色扩展、更细粒度的评估指标、语音输入功能、多语言支持、用户自定义角色和规则、实时反馈和适应、跨平台支持以及长期学习和进化等方面，以进一步提升系统的性能和用户体验。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">QianLi Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://yangqianli92.github.io/">https://yangqianli92.github.io/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">QianLi Yang</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/Paper/">Paper</a><a class="post-meta__tags" href="/tags/werewolf/">werewolf</a></div><div class="post-share"><div class="social-share" data-image="/images/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/15/o1%E5%8E%9F%E7%90%86/" title="GPT-o1原理学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">GPT-o1原理学习</div></div><div class="info-2"><div class="info-item-1">GPT-o1原理OpenAI o1原理逆向工程图解的分析，O1的训练过程可归纳为以下阶段和核心机制：  一、预训练阶段（Pre-training） 数据配比调整O1的基座模型重新训练（非GPT-4o微调），大幅增加逻辑类数据（如STEM学科、代码、论文），减少通用知识数据，导致O1 mini“逻辑推理极强但世界知识弱”。 目标与传统LLM一致通过Next Token Prediction学习语言、基础推理等能力，但通过数据优化侧重逻辑内化。   二、后训练阶段（Post-training） 指令微调（SFT）   使用逻辑推理类指令数据增强模型遵循指令的能力，为后续生成Hidden CoT铺垫。  Let’s Verify Step by Step技术继承  数据风格：中间过程采用口语化、长文本、含反思纠错的结构（例：”wait a...</div></div></div></a><a class="pagination-related" href="/2025/06/10/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A02/" title="LLM论文阅读-狼人杀系列 探索LLM在社交类游戏的应用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">LLM论文阅读-狼人杀系列 探索LLM在社交类游戏的应用</div></div><div class="info-2"><div class="info-item-1">Exploring Large Language Models for Communication Games: An Empirical Study on Werewolf  Authors: Yuzhuang Xu, Shuo Wang, Peng Li, Fuwen Luo, Xiaolong Wang, Weidong Liu, Yang Liu Communication games, which we refer to as incomplete information games that heavily depend on natural language communication, hold significant research value in fields such as economics, social science, and artificial intelligence. In this work, we explore the problem of how to engage large language models (LLMs) in...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/06/03/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A01/" title="LLM论文阅读-狼人杀系列 强化学习智能体在狼人杀中的策略玩法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-03</div><div class="info-item-2">LLM论文阅读-狼人杀系列 强化学习智能体在狼人杀中的策略玩法</div></div><div class="info-2"><div class="info-item-1">#1 Language Agents with Reinforcement Learning for Strategic Play in the Werewolf GameAuthors: Zelai Xu, Chao Yu, Fei Fang, Yu Wang, Yi Wu Agents built with large language models (LLMs) have shown great potential across a wide range of domains. However, in complex decision-making tasks, pure LLM-based agents tend to exhibit intrinsic bias in their choice of actions, which is inherited from the model’s training data and results in suboptimal performance. To develop strategic language agents,...</div></div></div></a><a class="pagination-related" href="/2025/06/10/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A02/" title="LLM论文阅读-狼人杀系列 探索LLM在社交类游戏的应用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-10</div><div class="info-item-2">LLM论文阅读-狼人杀系列 探索LLM在社交类游戏的应用</div></div><div class="info-2"><div class="info-item-1">Exploring Large Language Models for Communication Games: An Empirical Study on Werewolf  Authors: Yuzhuang Xu, Shuo Wang, Peng Li, Fuwen Luo, Xiaolong Wang, Weidong Liu, Yang Liu Communication games, which we refer to as incomplete information games that heavily depend on natural language communication, hold significant research value in fields such as economics, social science, and artificial intelligence. In this work, we explore the problem of how to engage large language models (LLMs) in...</div></div></div></a><a class="pagination-related" href="/2025/06/16/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A04/" title="LLM论文阅读-狼人杀系列4 利用多智能体强化学习训练社交推理语言模型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-16</div><div class="info-item-2">LLM论文阅读-狼人杀系列4 利用多智能体强化学习训练社交推理语言模型</div></div><div class="info-2"><div class="info-item-1">Training Language Models for Social Deduction with Multi-Agent Reinforcement LearningAuthors: Bidipta Sarkar, Warren Xia, C. Karen Liu, Dorsa Sadigh Communicating in natural language is a powerful tool in multi-agent settings, as it enables independent agents to share information in partially observable settings and allows zero-shot coordination with humans. However, most prior works are limited as they either rely on training with large amounts of human demonstrations or lack the ability to...</div></div></div></a><a class="pagination-related" href="/2025/06/16/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A05/" title="LLM论文阅读-狼人杀系列5 Werewolf Arena"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-16</div><div class="info-item-2">LLM论文阅读-狼人杀系列5 Werewolf Arena</div></div><div class="info-2"><div class="info-item-1">Werewolf Arena: A Case Study in LLM Evaluation via Social Deduction Authors: Suma Bailis, Jane Friedhoff, Feiyang Chen This paper introduces Werewolf Arena, a novel framework for evaluating large language models (LLMs) through the lens of the classic social deduction game, Werewolf. In Werewolf Arena, LLMs compete against each other, navigating the game’s complex dynamics of deception, deduction, and persuasion. The framework introduces a dynamic turn-taking system based on bidding,...</div></div></div></a><a class="pagination-related" href="/2025/06/03/MCP-RAG/" title="LLM论文阅读:RAG-MCP：通过检索增强生成技术缓解大型语言模型工具选择中的提示膨胀问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-03</div><div class="info-item-2">LLM论文阅读:RAG-MCP：通过检索增强生成技术缓解大型语言模型工具选择中的提示膨胀问题</div></div><div class="info-2"><div class="info-item-1">RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation [PDF5] [Copy] [Kimi19] [REL]Authors: Tiantian Gan, Qiyao Sun Large language models (LLMs) struggle to effectively utilize a growing number of external tools, such as those defined by the Model Context Protocol (MCP)\cite{IntroducingMCP}, due to prompt bloat and selection complexity. We introduce RAG-MCP, a Retrieval-Augmented Generation framework that overcomes this challenge by offloading tool...</div></div></div></a><a class="pagination-related" href="/2025/06/15/o1%E5%8E%9F%E7%90%86/" title="GPT-o1原理学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">GPT-o1原理学习</div></div><div class="info-2"><div class="info-item-1">GPT-o1原理OpenAI o1原理逆向工程图解的分析，O1的训练过程可归纳为以下阶段和核心机制：  一、预训练阶段（Pre-training） 数据配比调整O1的基座模型重新训练（非GPT-4o微调），大幅增加逻辑类数据（如STEM学科、代码、论文），减少通用知识数据，导致O1 mini“逻辑推理极强但世界知识弱”。 目标与传统LLM一致通过Next Token Prediction学习语言、基础推理等能力，但通过数据优化侧重逻辑内化。   二、后训练阶段（Post-training） 指令微调（SFT）   使用逻辑推理类指令数据增强模型遵循指令的能力，为后续生成Hidden CoT铺垫。  Let’s Verify Step by Step技术继承  数据风格：中间过程采用口语化、长文本、含反思纠错的结构（例：”wait a...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">QianLi Yang</div><div class="author-info-description">不定时更新程序员成长之路~</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/YangQianli92" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:chainllie92@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/Serein_Young" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8F%90%E5%87%BA%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8ELLM%E7%9A%84%E2%80%9C%E7%8B%BC%E4%BA%BA%E6%9D%80%E2%80%9D%E6%B8%B8%E6%88%8F%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">1. 提出一个基于LLM的“狼人杀”游戏系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E6%B8%B8%E6%88%8F%E6%B5%81%E7%A8%8B%E5%92%8C%E8%A7%92%E8%89%B2"><span class="toc-number">2.</span> <span class="toc-text">2. 设计游戏流程和角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-LLM%E8%A7%92%E8%89%B2%E6%89%AE%E6%BC%94"><span class="toc-number">3.</span> <span class="toc-text">3. LLM角色扮演</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%96%87%E6%9C%AC%E5%88%B0%E8%AF%AD%E9%9F%B3%EF%BC%88TTS%EF%BC%89%E6%A8%A1%E5%9D%97"><span class="toc-number">4.</span> <span class="toc-text">4. 文本到语音（TTS）模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%94%A8%E6%88%B7%E5%8F%82%E4%B8%8E%E5%92%8C%E5%BB%B6%E8%BF%9F%E4%BC%98%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">5. 用户参与和延迟优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7"><span class="toc-number">6.</span> <span class="toc-text">6. 系统的可扩展性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E6%80%A7%E6%B5%8B%E8%AF%95%EF%BC%88Qualitative-Testing%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">1. 定性测试（Qualitative Testing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%9A%E9%87%8F%E8%AF%84%E4%BC%B0%EF%BC%88Quantitative-Evaluation%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">2. 定量评估（Quantitative Evaluation）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B1%80%E9%99%90%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88Limitations-Analysis%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">3. 局限性分析（Limitations Analysis）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%8C%E5%85%A8%E6%99%BA%E8%83%BD%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">10.</span> <span class="toc-text">1. 完全智能体架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%A7%92%E8%89%B2%E6%89%A9%E5%B1%95"><span class="toc-number">11.</span> <span class="toc-text">2. 角色扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9B%B4%E7%BB%86%E7%B2%92%E5%BA%A6%E7%9A%84%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-number">12.</span> <span class="toc-text">3. 更细粒度的评估指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%AF%AD%E9%9F%B3%E8%BE%93%E5%85%A5%E5%8A%9F%E8%83%BD"><span class="toc-number">13.</span> <span class="toc-text">4. 语音输入功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%87%8F%E5%B0%91AI%E5%B9%BB%E8%A7%89"><span class="toc-number">14.</span> <span class="toc-text">5. 减少AI幻觉</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81"><span class="toc-number">15.</span> <span class="toc-text">6. 多语言支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%92%E8%89%B2%E5%92%8C%E8%A7%84%E5%88%99"><span class="toc-number">16.</span> <span class="toc-text">7. 用户自定义角色和规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%AE%9E%E6%97%B6%E5%8F%8D%E9%A6%88%E5%92%8C%E9%80%82%E5%BA%94"><span class="toc-number">17.</span> <span class="toc-text">8. 实时反馈和适应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%94%AF%E6%8C%81"><span class="toc-number">18.</span> <span class="toc-text">9. 跨平台支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%95%BF%E6%9C%9F%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%BF%9B%E5%8C%96"><span class="toc-number">19.</span> <span class="toc-text">10. 长期学习和进化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%94%E7%A9%B6%E8%83%8C%E6%99%AF"><span class="toc-number">20.</span> <span class="toc-text">研究背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95"><span class="toc-number">21.</span> <span class="toc-text">研究方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">21.1.</span> <span class="toc-text">1. 游戏框架设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-LLM%E8%A7%92%E8%89%B2%E6%89%AE%E6%BC%94"><span class="toc-number">21.2.</span> <span class="toc-text">2. LLM角色扮演</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%96%87%E6%9C%AC%E5%88%B0%E8%AF%AD%E9%9F%B3%EF%BC%88TTS%EF%BC%89%E6%A8%A1%E5%9D%97"><span class="toc-number">21.3.</span> <span class="toc-text">3. 文本到语音（TTS）模块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%8E%E8%AF%84%E4%BC%B0"><span class="toc-number">22.</span> <span class="toc-text">实验与评估</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%9A%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="toc-number">22.1.</span> <span class="toc-text">1. 定性测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%9A%E9%87%8F%E8%AF%84%E4%BC%B0"><span class="toc-number">22.2.</span> <span class="toc-text">2. 定量评估</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-number">23.</span> <span class="toc-text">局限性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">24.</span> <span class="toc-text">结论</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/16/%E7%8B%BC%E4%BA%BA%E6%9D%80/" title="无标题">无标题</a><time datetime="2025-06-16T10:10:10.792Z" title="发表于 2025-06-16 18:10:10">2025-06-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/16/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A04/" title="LLM论文阅读-狼人杀系列4 利用多智能体强化学习训练社交推理语言模型">LLM论文阅读-狼人杀系列4 利用多智能体强化学习训练社交推理语言模型</a><time datetime="2025-06-16T04:46:48.000Z" title="发表于 2025-06-16 12:46:48">2025-06-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/16/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A05/" title="LLM论文阅读-狼人杀系列5 Werewolf Arena">LLM论文阅读-狼人杀系列5 Werewolf Arena</a><time datetime="2025-06-16T04:46:48.000Z" title="发表于 2025-06-16 12:46:48">2025-06-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/15/o1%E5%8E%9F%E7%90%86/" title="GPT-o1原理学习">GPT-o1原理学习</a><time datetime="2025-06-15T08:35:48.000Z" title="发表于 2025-06-15 16:35:48">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/12/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9A%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A03/" title="LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度">LLM论文阅读-狼人杀系列 Werewolf 一个直观的游戏框架，配备文本转语音功能以提升用户参与度</a><time datetime="2025-06-12T04:46:48.000Z" title="发表于 2025-06-12 12:46:48">2025-06-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By QianLi Yang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
